@@ -1,0 +1,1529 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Biruk Music Training Center - Professional Keyboard and Sound Mixer Training">
+
+    <title>Biruk Music Training Center</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #090909;
+            color: #222;
+            line-height: 1.6;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(8,8,8,0.97);
+            border-bottom: 1px solid #292929;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.35);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 12px 20px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: white;
+            min-width: 220px;
+        }
+
+        .brand img {
+            width: 55px;
+            height: 55px;
+            object-fit: contain;
+            border-radius: 50%;
+            background: white;
+            padding: 3px;
+        }
+
+        .brand h1 {
+            color: #d4af37;
+            font-size: 20px;
+        }
+
+        .brand span {
+            color: #aaa;
+            font-size: 12px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 9px 11px;
+            border-radius: 7px;
+            font-size: 14px;
+            transition: 0.25s;
+        }
+
+        nav a:hover {
+            background: #d4af37;
+            color: #111;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 650px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+            padding: 80px 20px;
+
+            background:
+                linear-gradient(
+                    rgba(0,0,0,0.78),
+                    rgba(0,0,0,0.90)
+                ),
+                url("hero.jpg");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-logo {
+            width: 125px;
+            height: 125px;
+            object-fit: contain;
+
+            background: white;
+            border-radius: 50%;
+            padding: 6px;
+
+            margin-bottom: 25px;
+
+            box-shadow:
+                0 0 35px rgba(212,175,55,0.35);
+        }
+
+        .hero h2 {
+            color: #d4af37;
+            font-size: clamp(40px, 7vw, 76px);
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+
+        .hero h3 {
+            color: white;
+            font-size: clamp(22px, 4vw, 34px);
+            margin-bottom: 18px;
+        }
+
+        .hero p {
+            max-width: 760px;
+            color: #ddd;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 13px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 23px;
+            border-radius: 9px;
+            text-decoration: none;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-gold {
+            background: #d4af37;
+            color: #111;
+        }
+
+        .btn-gold:hover {
+            background: #f0cf58;
+        }
+
+        .btn-dark {
+            background: #222;
+            color: white;
+            border: 1px solid #555;
+        }
+
+        .btn-dark:hover {
+            background: #333;
+        }
+
+        .btn-green {
+            background: #168a3a;
+            color: white;
+        }
+
+        .btn-green:hover {
+            background: #106c2d;
+        }
+
+        /* =========================
+           SECTIONS
+        ========================= */
+
+        section {
+            scroll-margin-top: 90px;
+        }
+
+        .section {
+            max-width: 1150px;
+            margin: auto;
+            padding: 75px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 42px;
+        }
+
+        .section-title h2 {
+            color: #d4af37;
+            font-size: clamp(28px,5vw,42px);
+            margin-bottom: 8px;
+        }
+
+        .section-title p {
+            color: #aaa;
+            max-width: 700px;
+            margin: auto;
+        }
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        .about-box {
+            background: white;
+            padding: 38px;
+            border-radius: 18px;
+
+            box-shadow:
+                0 15px 40px rgba(0,0,0,0.25);
+
+            text-align: center;
+        }
+
+        .about-box p {
+            color: #444;
+            margin-bottom: 15px;
+        }
+
+        /* =========================
+           COURSES
+        ========================= */
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(2,1fr);
+            gap: 25px;
+        }
+
+        .course-card {
+            background: white;
+            padding: 32px;
+            border-radius: 18px;
+
+            border-top: 5px solid #d4af37;
+
+            box-shadow:
+                0 15px 40px rgba(0,0,0,0.25);
+
+            transition: 0.3s;
+        }
+
+        .course-card:hover {
+            transform: translateY(-7px);
+        }
+
+        .course-icon {
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+
+        .course-card h3 {
+            font-size: 27px;
+            margin-bottom: 12px;
+        }
+
+        .course-card p {
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .course-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .course-list li {
+            padding: 6px 0;
+        }
+
+        .course-list li::before {
+            content: "✓ ";
+            color: #168a3a;
+            font-weight: bold;
+        }
+
+        .price {
+            color: #168a3a;
+            font-size: 25px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        /* =========================
+           PAYMENT
+        ========================= */
+
+        .payment-section {
+            background:
+                linear-gradient(
+                    135deg,
+                    #101010,
+                    #191919
+                );
+        }
+
+        .payment-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 22px;
+        }
+
+        .payment-card {
+            background: white;
+            padding: 30px;
+            border-radius: 18px;
+            text-align: center;
+
+            border-top: 5px solid #d4af37;
+
+            box-shadow:
+                0 12px 35px rgba(0,0,0,0.25);
+
+            transition: 0.3s;
+        }
+
+        .payment-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .payment-icon {
+            font-size: 45px;
+            margin-bottom: 10px;
+        }
+
+        .payment-card h3 {
+            font-size: 23px;
+            margin-bottom: 8px;
+        }
+
+        .payment-card p {
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .account-number {
+            background: #f2f2f2;
+            padding: 14px 8px;
+            border-radius: 9px;
+
+            font-size: 20px;
+            font-weight: bold;
+
+            letter-spacing: 1px;
+            margin: 15px 0;
+            word-break: break-all;
+        }
+
+        .copy-btn {
+            width: 100%;
+            padding: 12px;
+
+            border: none;
+            border-radius: 8px;
+
+            background: #111;
+            color: white;
+
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .copy-btn:hover {
+            background: #333;
+        }
+
+        .course-fees {
+            background: white;
+            border-radius: 18px;
+            padding: 30px;
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        .course-fees h3 {
+            color: #168a3a;
+            font-size: 25px;
+            margin-bottom: 15px;
+        }
+
+        .course-fees p {
+            margin: 8px 0;
+            color: #444;
+        }
+
+        .course-fees strong {
+            color: #168a3a;
+        }
+
+        .payment-instruction {
+            background: #fff4df;
+            color: #855800;
+
+            padding: 18px;
+            border-radius: 10px;
+
+            margin-top: 20px;
+
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* =========================
+           HOW IT WORKS
+        ========================= */
+
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(5,1fr);
+            gap: 15px;
+        }
+
+        .step {
+            background: white;
+            padding: 22px;
+            border-radius: 15px;
+            text-align: center;
+
+            box-shadow:
+                0 8px 25px rgba(0,0,0,0.20);
+        }
+
+        .step-number {
+            width: 48px;
+            height: 48px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            margin: 0 auto 15px;
+
+            border-radius: 50%;
+            background: #d4af37;
+
+            color: #111;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .step h3 {
+            margin-bottom: 8px;
+        }
+
+        .step p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* =========================
+           STUDENT ACCESS
+        ========================= */
+
+        .access-box {
+            background:
+                linear-gradient(
+                    135deg,
+                    #151515,
+                    #242424
+                );
+
+            border:
+                1px solid
+                rgba(212,175,55,0.4);
+
+            border-radius: 20px;
+            padding: 45px 25px;
+            text-align: center;
+        }
+
+        .access-box h2 {
+            color: #d4af37;
+            font-size: 32px;
+            margin-bottom: 12px;
+        }
+
+        .access-box p {
+            color: #ccc;
+            max-width: 650px;
+            margin: 0 auto 25px;
+        }
+
+        /* =========================
+           CONTACT
+        ========================= */
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 20px;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 28px;
+            border-radius: 15px;
+            text-align: center;
+
+            box-shadow:
+                0 8px 25px rgba(0,0,0,0.20);
+        }
+
+        .contact-icon {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .contact-card h3 {
+            margin-bottom: 8px;
+        }
+
+        .contact-card p {
+            color: #555;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #050505;
+            border-top: 1px solid #222;
+
+            text-align: center;
+            padding: 35px 20px;
+
+            color: #aaa;
+        }
+
+        footer h3 {
+            color: #d4af37;
+            margin-bottom: 8px;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media(max-width:950px) {
+
+            .header-container {
+                flex-direction: column;
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            .steps {
+                grid-template-columns: repeat(2,1fr);
+            }
+
+            .payment-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media(max-width:700px) {
+
+            .course-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .steps {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                min-height: 600px;
+                padding: 60px 15px;
+            }
+
+            .hero-logo {
+                width: 100px;
+                height: 100px;
+            }
+
+            .hero h2 {
+                letter-spacing: 1px;
+            }
+
+            .section {
+                padding: 55px 15px;
+            }
+
+            .about-box,
+            .course-card {
+                padding: 24px;
+            }
+
+        }
+
+        @media(max-width:450px) {
+
+            .brand img {
+                width: 48px;
+                height: 48px;
+            }
+
+            .brand h1 {
+                font-size: 17px;
+            }
+
+            nav a {
+                font-size: 12px;
+                padding: 7px 6px;
+            }
+
+            .account-number {
+                font-size: 17px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =================================================
+     HEADER
+================================================= -->
+
+<header>
+
+    <div class="header-container">
+
+        <a href="index.html" class="brand">
+
+            <img
+                src="logo.png"
+                alt="Biruk Music Training Center Logo"
+            >
+
+            <div>
+
+                <h1>
+                    Biruk Music
+                </h1>
+
+                <span>
+                    Training Center
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <nav>
+
+            <a href="index.html">
+                Home
+            </a>
+
+            <a href="#about">
+                About
+            </a>
+
+            <a href="#courses">
+                Courses
+            </a>
+
+            <a href="#payment">
+                Payment
+            </a>
+
+            <a href="Register.html">
+                Register
+            </a>
+
+            <a href="Login.html">
+                🔐 Login
+            </a>
+
+            <a href="Course.html">
+                📚 My Course
+            </a>
+
+            <a href="#contact">
+                Contact
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+<!-- =================================================
+     HERO
+================================================= -->
+
+<section class="hero">
+
+    <img
+        src="logo.png"
+        alt="Biruk Music Training Center Logo"
+        class="hero-logo"
+    >
+
+
+    <h2>
+        PLAY. LEARN. GROW.
+    </h2>
+
+
+    <h3>
+        Professional Music Training
+    </h3>
+
+
+    <p>
+
+        Learn professional
+        <strong>Keyboard Playing</strong>
+        and
+        <strong>Sound Mixer Operation</strong>
+        through practical step-by-step training.
+
+        Build skills for church, events,
+        studio and live performance.
+
+    </p>
+
+
+    <div class="buttons">
+
+        <a
+            href="Register.html"
+            class="btn btn-gold"
+        >
+            🎓 Register Now
+        </a>
+
+
+        <a
+            href="#courses"
+            class="btn btn-dark"
+        >
+            🎹 View Courses
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =================================================
+     ABOUT
+================================================= -->
+
+<section
+    id="about"
+    class="section"
+>
+
+    <div class="section-title">
+
+        <h2>
+            🎵 About Biruk Music
+        </h2>
+
+        <p>
+            Practical music education designed
+            for beginners and advanced learners.
+        </p>
+
+    </div>
+
+
+    <div class="about-box">
+
+        <p>
+
+            Welcome to
+            <strong>
+                Biruk Music Training Center
+            </strong>.
+
+        </p>
+
+        <p>
+
+            We provide practical and professional
+            training in Keyboard Playing and
+            Sound Mixer Operation.
+
+        </p>
+
+        <p>
+
+            Our lessons help students develop
+            practical skills that can be used in
+            church, events, studio and live
+            performance.
+
+        </p>
+
+        <p>
+
+            🎯 Our goal is simple:
+
+            <strong>
+                PLAY. LEARN. GROW.
+            </strong>
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =================================================
+     COURSES
+================================================= -->
+
+<section
+    id="courses"
+    class="section"
+>
+
+    <div class="section-title">
+
+        <h2>
+            🎓 Our Courses
+        </h2>
+
+        <p>
+            Choose the course you want to learn.
+        </p>
+
+    </div>
+
+
+    <div class="course-grid">
+
+
+        <!-- KEYBOARD -->
+
+        <div class="course-card">
+
+            <div class="course-icon">
+                🎹
+            </div>
+
+            <h3>
+                Keyboard Training
+            </h3>
+
+            <p>
+                Learn keyboard playing step by step
+                from beginner to advanced level.
+            </p>
+
+
+            <ul class="course-list">
+
+                <li>
+                    Keyboard Basics
+                </li>
+
+                <li>
+                    Chords & Melody
+                </li>
+
+                <li>
+                    Song & Styles
+                </li>
+
+                <li>
+                    Voice Selection
+                </li>
+
+                <li>
+                    Song Practice
+                </li>
+
+                <li>
+                    Stage Performance
+                </li>
+
+            </ul>
+
+
+            <div class="price">
+                800 ETB
+            </div>
+
+
+            <a
+                href="Register.html"
+                class="btn btn-green"
+            >
+                🎹 Register for Keyboard
+            </a>
+
+        </div>
+
+
+        <!-- SOUND MIXER -->
+
+        <div class="course-card">
+
+            <div class="course-icon">
+                🎚️
+            </div>
+
+            <h3>
+                Sound Mixer Training
+            </h3>
+
+            <p>
+                Learn professional live sound
+                and mixer operation.
+            </p>
+
+
+            <ul class="course-list">
+
+                <li>
+                    Mixer Basics
+                </li>
+
+                <li>
+                    Gain
+                </li>
+
+                <li>
+                    EQ
+                </li>
+
+                <li>
+                    Effects
+                </li>
+
+                <li>
+                    Microphone Setup
+                </li>
+
+                <li>
+                    Speaker Setup
+                </li>
+
+                <li>
+                    Church & Event Sound
+                </li>
+
+            </ul>
+
+
+            <div class="price">
+                1,000 ETB
+            </div>
+
+
+            <a
+                href="Register.html"
+                class="btn btn-green"
+            >
+                🎚️ Register for Sound Mixer
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =================================================
+     PAYMENT
+================================================= -->
+
+<section
+    id="payment"
+    class="payment-section"
+>
+
+    <div class="section">
+
+        <div class="section-title">
+
+            <h2>
+                💳 Payment Information
+            </h2>
+
+            <p>
+                Pay your selected course fee using
+                one of the payment methods below.
+            </p>
+
+        </div>
+
+
+        <div class="payment-grid">
+
+
+            <!-- AWASH BANK -->
+
+            <div class="payment-card">
+
+                <div class="payment-icon">
+                    🏦
+                </div>
+
+                <h3>
+                    Awash Bank
+                </h3>
+
+                <p>
+                    Account Number
+                </p>
+
+                <div class="account-number">
+                    013490684158000
+                </div>
+
+                <button
+                    class="copy-btn"
+                    onclick="copyText('013490684158000')"
+                >
+                    📋 Copy Account Number
+                </button>
+
+            </div>
+
+
+            <!-- CBE -->
+
+            <div class="payment-card">
+
+                <div class="payment-icon">
+                    🏦
+                </div>
+
+                <h3>
+                    Commercial Bank of Ethiopia
+                </h3>
+
+                <p>
+                    CBE Account Number
+                </p>
+
+                <div class="account-number">
+                    1000660848391
+                </div>
+
+                <button
+                    class="copy-btn"
+                    onclick="copyText('1000660848391')"
+                >
+                    📋 Copy CBE Account
+                </button>
+
+            </div>
+
+
+            <!-- TELEBIRR -->
+
+            <div class="payment-card">
+
+                <div class="payment-icon">
+                    📱
+                </div>
+
+                <h3>
+                    Telebirr
+                </h3>
+
+                <p>
+                    Telebirr Number
+                </p>
+
+                <div class="account-number">
+                    0953735755
+                </div>
+
+                <button
+                    class="copy-btn"
+                    onclick="copyText('0953735755')"
+                >
+                    📋 Copy Telebirr Number
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- COURSE FEES -->
+
+        <div class="course-fees">
+
+            <h3>
+                🎓 Course Fees
+            </h3>
+
+            <p>
+                🎹 Keyboard Training:
+                <strong>
+                    800 ETB
+                </strong>
+            </p>
+
+            <p>
+                🎚️ Sound Mixer Training:
+                <strong>
+                    1,000 ETB
+                </strong>
+            </p>
+
+
+            <div class="payment-instruction">
+
+                ⚠️ After making your payment,
+                complete your registration and
+                submit your payment information.
+
+            </div>
+
+            <br>
+
+            <div class="buttons">
+
+                <a
+                    href="Register.html"
+                    class="btn btn-green"
+                >
+                    🎓 Continue to Registration
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =================================================
+     HOW IT WORKS
+================================================= -->
+
+<section class="section">
+
+    <div class="section-title">
+
+        <h2>
+            📚 How It Works
+        </h2>
+
+        <p>
+            Follow these simple steps.
+        </p>
+
+    </div>
+
+
+    <div class="steps">
+
+
+        <div class="step">
+
+            <div class="step-number">
+                1
+            </div>
+
+            <h3>
+                Register
+            </h3>
+
+            <p>
+                Enter your name, phone,
+                email and select your course.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                2
+            </div>
+
+            <h3>
+                Make Payment
+            </h3>
+
+            <p>
+                Pay using Awash Bank,
+                CBE or Telebirr.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                3
+            </div>
+
+            <h3>
+                Submit Payment
+            </h3>
+
+            <p>
+                Submit your transaction
+                information.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                4
+            </div>
+
+            <h3>
+                Confirmation
+            </h3>
+
+            <p>
+                Admin checks and confirms
+                your payment.
+            </p>
+
+        </div>
+
+
+        <div class="step">
+
+            <div class="step-number">
+                5
+            </div>
+
+            <h3>
+                Access Course
+            </h3>
+
+            <p>
+                Login and open your
+                purchased course.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =================================================
+     STUDENT ACCESS
+================================================= -->
+
+<section class="section">
+
+    <div class="access-box">
+
+        <h2>
+            👨‍🎓 Already Registered?
+        </h2>
+
+        <p>
+
+            If you have already registered and your
+            payment has been confirmed, login to
+            access your course.
+
+        </p>
+
+
+        <div class="buttons">
+
+            <a
+                href="Login.html"
+                class="btn btn-gold"
+            >
+                🔐 Student Login
+            </a>
+
+
+            <a
+                href="Course.html"
+                class="btn btn-dark"
+            >
+                📚 My Course
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =================================================
+     CONTACT
+================================================= -->
+
+<section
+    id="contact"
+    class="section"
+>
+
+    <div class="section-title">
+
+        <h2>
+            📞 Contact Us
+        </h2>
+
+        <p>
+            Contact Biruk Music Training Center
+            for more information.
+        </p>
+
+    </div>
+
+
+    <div class="contact-grid">
+
+
+        <div class="contact-card">
+
+            <div class="contact-icon">
+                🎵
+            </div>
+
+            <h3>
+                Biruk Music
+            </h3>
+
+            <p>
+                Professional Keyboard &
+                Sound Mixer Training
+            </p>
+
+        </div>
+
+
+        <div class="contact-card">
+
+            <div class="contact-icon">
+                📱
+            </div>
+
+            <h3>
+                Phone
+            </h3>
+
+            <p>
+                0953735755
+            </p>
+
+        </div>
+
+
+        <div class="contact-card">
+
+            <div class="contact-icon">
+                🎓
+            </div>
+
+            <h3>
+                Courses
+            </h3>
+
+            <p>
+                Keyboard & Sound Mixer
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =================================================
+     FOOTER
+================================================= -->
+
+<footer>
+
+    <h3>
+        🎵 Biruk Music Training Center
+    </h3>
+
+    <p>
+        PLAY. LEARN. GROW.
+    </p>
+
+    <p>
+        Professional Keyboard &
+        Sound Mixer Training
+    </p>
+
+    <p>
+        © 2026 Biruk Music Training Center.
+        All Rights Reserved.
+    </p>
+
+</footer>
+
+
+<!-- =================================================
+     JAVASCRIPT
+================================================= -->
+
+<script>
+
+    function copyText(text) {
+
+        if (
+            navigator.clipboard &&
+            window.isSecureContext
+        ) {
+
+            navigator.clipboard
+                .writeText(text)
+                .then(function() {
+
+                    alert(
+                        "✅ Copied successfully: " +
+                        text
+                    );
+
+                })
+                .catch(function() {
+
+                    alert(
+                        "Please copy the number manually: " +
+                        text
+                    );
+
+                });
+
+        } else {
+
+            alert(
+                "📋 Copy this number: " +
+                text
+            );
+
+        }
+
+    }
+
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,1884 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Register | Biruk Music Training Center</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg,#080808,#151515,#0b0b0b);
+    color: #222;
+}
+
+.hero {
+    position: relative;
+    min-height: 390px;
+    background-image: url("hero.jpg");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.68);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+    max-width: 800px;
+}
+
+.hero-logo {
+    width: 105px;
+    height: 105px;
+    object-fit: contain;
+    margin-bottom: 15px;
+    border-radius: 20px;
+}
+
+.hero h1 {
+    margin: 5px 0;
+    font-size: 42px;
+}
+
+.hero p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #ddd;
+}
+
+.top-nav {
+    background: #111;
+    padding: 14px;
+    text-align: center;
+    border-bottom: 1px solid #333;
+}
+
+.top-nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: bold;
+}
+
+.top-nav a:hover {
+    color: #d4af37;
+}
+
+.courses {
+    max-width: 1050px;
+    margin: 45px auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    text-align: center;
+    color: white;
+    margin-bottom: 28px;
+}
+
+.section-title h2 {
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.section-title p {
+    color: #bbb;
+}
+
+.course-grid {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 25px;
+}
+
+.course-card {
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    transition: 0.3s;
+}
+
+.course-card:hover {
+    transform: translateY(-6px);
+}
+
+.course-card img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+}
+
+.course-content {
+    padding: 22px;
+}
+
+.course-content h3 {
+    margin-top: 0;
+    font-size: 23px;
+}
+
+.course-content p {
+    color: #666;
+    line-height: 1.7;
+}
+
+.price {
+    color: #168a3a !important;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.register {
+    max-width: 700px;
+    margin: 45px auto;
+    padding: 20px;
+}
+
+.register-box {
+    background: white;
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.30);
+}
+
+.register-title {
+    text-align: center;
+}
+
+.register-title h2 {
+    margin-bottom: 8px;
+    font-size: 29px;
+}
+
+.register-title p {
+    color: #666;
+    line-height: 1.6;
+}
+
+#registrationForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+#registrationForm input,
+#registrationForm select {
+    width: 100%;
+    padding: 16px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+#registrationForm input:focus,
+#registrationForm select:focus {
+    outline: none;
+    border-color: #168a3a;
+    box-shadow: 0 0 0 3px rgba(22,138,58,0.10);
+}
+
+.main-button {
+    width: 100%;
+    padding: 16px;
+    background: #111;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.main-button:hover {
+    background: #333;
+}
+
+.main-button:disabled {
+    background: #888;
+    cursor: not-allowed;
+}
+
+#paymentSection {
+    display: none;
+    margin-top: 30px;
+}
+
+.success-header {
+    text-align: center;
+    background: #eaf8ee;
+    padding: 25px;
+    border-radius: 16px;
+    margin-bottom: 22px;
+}
+
+.success-icon {
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    margin: auto;
+    background: #168a3a;
+    color: white;
+    border-radius: 50%;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.success-header h2 {
+    color: #168a3a;
+}
+
+.course-info {
+    background: #f8f8f8;
+    padding: 20px;
+    border-radius: 14px;
+    margin-bottom: 25px;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 14px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.info-row:last-child {
+    border-bottom: none;
+}
+
+.price-row strong {
+    color: #168a3a;
+    font-size: 21px;
+}
+
+.payment-title {
+    text-align: center;
+    margin: 25px 0;
+}
+
+.payment-title h3 {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.payment-title p {
+    color: #666;
+}
+
+.payment-method {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 22px;
+    border-radius: 15px;
+    margin-bottom: 16px;
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+}
+
+.method-icon {
+    font-size: 38px;
+    min-width: 45px;
+}
+
+.method-content h3 {
+    margin: 0 0 12px;
+    font-size: 20px;
+}
+
+.method-content p {
+    margin: 9px 0;
+}
+
+.method-content span {
+    display: block;
+    color: #777;
+    font-size: 13px;
+    margin-bottom: 3px;
+}
+
+.method-content strong {
+    font-size: 17px;
+}
+
+.account-number,
+.phone-number {
+    color: #168a3a;
+    font-size: 18px !important;
+    letter-spacing: 0.5px;
+}
+
+.payment-note {
+    background: #fff7df;
+    border: 1px solid #efd27b;
+    padding: 20px;
+    border-radius: 13px;
+    margin-top: 22px;
+    line-height: 1.7;
+}
+
+.payment-note strong {
+    color: #8a6100;
+}
+
+#paidButton {
+    width: 100%;
+    padding: 17px;
+    margin-top: 20px;
+    background: #168a3a;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#paidButton:hover {
+    background: #106c2d;
+}
+
+#paidButton:disabled {
+    background: #888;
+    cursor: not-allowed;
+}
+
+#message,
+#paymentMessage {
+    text-align: center;
+    margin-top: 15px;
+    font-weight: bold;
+    line-height: 1.6;
+}
+
+.success {
+    color: #168a3a;
+}
+
+.pending {
+    color: #a76500;
+}
+
+.error {
+    color: #c00000;
+}
+
+.footer {
+    background: #050505;
+    color: white;
+    text-align: center;
+    padding: 35px 15px;
+    margin-top: 50px;
+}
+
+.footer p {
+    color: #aaa;
+}
+
+@media(max-width:700px) {
+
+    .hero {
+        min-height: 330px;
+    }
+
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .course-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .register {
+        margin: 25px auto;
+        padding: 12px;
+    }
+
+    .register-box {
+        padding: 22px;
+    }
+
+    .payment-method {
+        padding: 18px;
+    }
+
+    .top-nav a {
+        display: inline-block;
+        margin: 5px;
+    }
+
+    .info-row {
+        flex-direction: column;
+        gap: 6px;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<img
+src="logo.png"
+alt="Biruk Music Training Center Logo"
+class="hero-logo"
+>
+
+<h1>
+Biruk Music Training Center
+</h1>
+
+<p>
+🎹 Professional Keyboard & Sound Mixer Training
+</p>
+
+<p>
+<strong>PLAY. LEARN. GROW.</strong>
+</p>
+
+</div>
+
+</section>
+
+
+<!-- NAVIGATION -->
+
+<nav class="top-nav">
+
+<a href="index.html">🏠 Home</a>
+
+<a href="Register.html">📝 Register</a>
+
+<a href="Login.html">🔐 Login</a>
+
+<a href="Course.html">📚 My Course</a>
+
+</nav>
+
+
+<!-- COURSES -->
+
+<section class="courses">
+
+<div class="section-title">
+
+<h2>
+🎓 Our Training Courses
+</h2>
+
+<p>
+Choose your course and start learning today.
+</p>
+
+</div>
+
+
+<div class="course-grid">
+
+
+<!-- KEYBOARD -->
+
+<div class="course-card">
+
+<img
+src="keyboard.jpg"
+alt="Keyboard Training"
+>
+
+<div class="course-content">
+
+<h3>
+🎹 Keyboard Training
+</h3>
+
+<p>
+Learn keyboard playing from beginner
+to advanced level.
+</p>
+
+<p>
+✔ Keyboard Basics<br>
+✔ Chords & Melody<br>
+✔ Song & Styles<br>
+✔ Voice Selection<br>
+✔ Song Practice<br>
+✔ Stage Performance
+</p>
+
+<p class="price">
+Course Fee: 800 ETB
+</p>
+
+</div>
+
+</div>
+
+
+<!-- MIXER -->
+
+<div class="course-card">
+
+<img
+src="mixer.jpg"
+alt="Sound Mixer Training"
+>
+
+<div class="course-content">
+
+<h3>
+🎚️ Sound Mixer Training
+</h3>
+
+<p>
+Learn professional live sound and
+mixer operation step by step.
+</p>
+
+<p>
+✔ Mixer Basics<br>
+✔ Gain & EQ<br>
+✔ Effects<br>
+✔ Microphone Setup<br>
+✔ Speaker Setup<br>
+✔ Church & Event Sound
+</p>
+
+<p class="price">
+Course Fee: 1,000 ETB
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- REGISTRATION -->
+
+<section class="register">
+
+<div class="register-box">
+
+<div class="register-title">
+
+<h2>
+📝 Student Registration
+</h2>
+
+<p>
+Fill in your information carefully
+to register for your selected course.
+</p>
+
+</div>
+
+
+<form id="registrationForm">
+
+<input
+id="full_name"
+type="text"
+placeholder="Full Name"
+autocomplete="name"
+required
+>
+
+<input
+id="phone"
+type="tel"
+placeholder="Phone Number"
+autocomplete="tel"
+required
+>
+
+<input
+id="email"
+type="email"
+placeholder="Email Address"
+autocomplete="email"
+required
+>
+
+<select id="course" required>
+
+<option value="">
+🎓 Select Your Course
+</option>
+
+<option value="Keyboard Training">
+🎹 Keyboard Training — 800 ETB
+</option>
+
+<option value="Sound Mixer Training">
+🎚️ Sound Mixer Training — 1,000 ETB
+</option>
+
+</select>
+
+<button
+type="submit"
+id="submitButton"
+class="main-button"
+>
+Continue to Payment →
+</button>
+
+</form>
+
+<p id="message"></p>
+
+
+<!-- PAYMENT SECTION -->
+
+<div id="paymentSection">
+
+<div class="success-header">
+
+<div class="success-icon">
+✓
+</div>
+
+<h2>
+Registration Successful!
+</h2>
+
+<p>
+Your registration has been saved.
+Now complete your course payment.
+</p>
+
+</div>
+
+
+<div class="course-info">
+
+<div class="info-row">
+
+<span>
+🎓 Selected Course
+</span>
+
+<strong id="selectedCourse">
+-
+</strong>
+
+</div>
+
+<div class="info-row price-row">
+
+<span>
+💰 Course Fee
+</span>
+
+<strong id="coursePrice">
+0 ETB
+</strong>
+
+</div>
+
+</div>
+
+
+<div class="payment-title">
+
+<h3>
+💳 Payment Methods
+</h3>
+
+<p>
+Pay the exact course fee using
+one of the accounts below.
+</p>
+
+</div>
+
+
+<!-- TELEBIRR -->
+
+<div class="payment-method">
+
+<div class="method-icon">
+📱
+</div>
+
+<div class="method-content">
+
+<h3>
+Telebirr
+</h3>
+
+<p>
+
+<span>
+Account Name
+</span>
+
+<strong>
+Biruk Habtamu
+</strong>
+
+</p>
+
+<p>
+
+<span>
+Telebirr Phone Number
+</span>
+
+<strong class="phone-number">
+0953735755
+</strong>
+
+</p>
+
+</div>
+
+</div>
+
+
+<!-- AWASH -->
+
+<div class="payment-method">
+
+<div class="method-icon">
+🏦
+</div>
+
+<div class="method-content">
+
+<h3>
+Awash Bank
+</h3>
+
+<p>
+
+<span>
+Account Name
+</span>
+
+<strong>
+Biruk Habtamu
+</strong>
+
+</p>
+
+<p>
+
+<span>
+Account Number
+</span>
+
+<strong class="account-number">
+01349068415800
+</strong>
+
+</p>
+
+</div>
+
+</div>
+
+
+<!-- CBE -->
+
+<div class="payment-method">
+
+<div class="method-icon">
+🏦
+</div>
+
+<div class="method-content">
+
+<h3>
+Commercial Bank of Ethiopia (CBE)
+</h3>
+
+<p>
+
+<span>
+Account Name
+</span>
+
+<strong>
+Biruk Habtamu Koru
+</strong>
+
+</p>
+
+<p>
+
+<span>
+Account Number
+</span>
+
+<strong class="account-number">
+1000660848391
+</strong>
+
+</p>
+
+</div>
+
+</div>
+
+
+<div class="payment-note">
+
+<strong>
+📌 Important Payment Instructions
+</strong>
+
+<p>
+1. Select your course and check the fee.
+</p>
+
+<p>
+2. Pay the exact amount using
+Telebirr, Awash Bank or CBE.
+</p>
+
+<p>
+3. After completing payment,
+click <strong>I HAVE PAID</strong>.
+</p>
+
+<p>
+4. Your payment will be sent to the administrator
+for verification.
+</p>
+
+<p>
+5. After confirmation, your course
+will be unlocked.
+</p>
+
+</div>
+
+
+<button
+type="button"
+id="paidButton"
+>
+✅ I HAVE PAID
+</button>
+
+<p id="paymentMessage"></p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+<h3>
+🎵 Biruk Music Training Center
+</h3>
+
+<p>
+Professional Keyboard & Sound Mixer Training
+</p>
+
+<p>
+PLAY. LEARN. GROW.
+</p>
+
+<p>
+📱 0953735755
+</p>
+
+<p>
+© 2026 Biruk Music Training Center
+</p>
+
+</footer>
+
+
+<script>
+
+/* =========================================
+   SUPABASE
+========================================= */
+
+const SUPABASE_URL =
+"https://ronwmcvqsksvbmbkaqgb.supabase.co";
+
+const SUPABASE_REST_URL =
+SUPABASE_URL + "/rest/v1/";
+
+const SUPABASE_PUBLISHABLE_KEY =
+"sb_publishable_PWLxrjF2dDUKDrApUJM1dQ_e9BfxDqO";
+
+
+function getHeaders() {
+
+return {
+
+"apikey":
+SUPABASE_PUBLISHABLE_KEY,
+
+"Authorization":
+"Bearer " + SUPABASE_PUBLISHABLE_KEY,
+
+"Content-Type":
+"application/json",
+
+"Accept":
+"application/json"
+
+};
+
+}
+
+
+/* =========================================
+   VARIABLES
+========================================= */
+
+let currentStudentId = "";
+let currentCourseId = "";
+let currentTxRef = "";
+let currentEnrollmentId = "";
+let currentPrice = 0;
+
+
+/* =========================================
+   ELEMENTS
+========================================= */
+
+const registrationForm =
+document.getElementById("registrationForm");
+
+const courseSelect =
+document.getElementById("course");
+
+const coursePrice =
+document.getElementById("coursePrice");
+
+const selectedCourse =
+document.getElementById("selectedCourse");
+
+const paymentSection =
+document.getElementById("paymentSection");
+
+const message =
+document.getElementById("message");
+
+const submitButton =
+document.getElementById("submitButton");
+
+const paidButton =
+document.getElementById("paidButton");
+
+const paymentMessage =
+document.getElementById("paymentMessage");
+
+
+/* =========================================
+   MESSAGE
+========================================= */
+
+function showMessage(element,type,text) {
+
+element.textContent = text;
+element.className = type;
+
+}
+
+
+/* =========================================
+   COURSE SELECTION
+========================================= */
+
+courseSelect.addEventListener(
+"change",
+async function() {
+
+const selectedName = this.value;
+
+if (!selectedName) {
+
+currentPrice = 0;
+currentCourseId = "";
+
+coursePrice.textContent = "0 ETB";
+selectedCourse.textContent = "-";
+
+return;
+
+}
+
+selectedCourse.textContent = selectedName;
+
+try {
+
+const response = await fetch(
+
+SUPABASE_REST_URL +
+"courses?name=eq." +
+encodeURIComponent(selectedName) +
+"&select=id,name,price",
+
+{
+method:"GET",
+headers:getHeaders()
+}
+
+);
+
+if (!response.ok) {
+
+const errorText =
+await response.text();
+
+throw new Error(
+"Course lookup failed: " +
+errorText
+);
+
+}
+
+const courses =
+await response.json();
+
+if (
+!Array.isArray(courses) ||
+courses.length === 0
+) {
+
+throw new Error(
+"Course not found in database."
+);
+
+}
+
+currentCourseId =
+courses[0].id;
+
+currentPrice =
+Number(courses[0].price);
+
+coursePrice.textContent =
+currentPrice.toLocaleString() +
+" ETB";
+
+}
+
+catch(error) {
+
+console.error(error);
+
+currentCourseId = "";
+currentPrice = 0;
+
+coursePrice.textContent = "0 ETB";
+
+showMessage(
+message,
+"error",
+"❌ " + error.message
+);
+
+}
+
+});
+
+
+/* =========================================
+   REGISTER STUDENT
+========================================= */
+
+registrationForm.addEventListener(
+"submit",
+async function(event) {
+
+event.preventDefault();
+
+const full_name =
+document.getElementById("full_name")
+.value.trim();
+
+const phone =
+document.getElementById("phone")
+.value.trim();
+
+const email =
+document.getElementById("email")
+.value.trim()
+.toLowerCase();
+
+const course =
+courseSelect.value;
+
+
+if (
+!full_name ||
+!phone ||
+!email ||
+!course
+) {
+
+showMessage(
+message,
+"error",
+"❌ Please complete all fields."
+);
+
+return;
+
+}
+
+
+submitButton.disabled = true;
+submitButton.textContent =
+"Checking... ⏳";
+
+
+try {
+
+/* =====================================
+   1. FIND COURSE
+===================================== */
+
+const courseResponse =
+await fetch(
+
+SUPABASE_REST_URL +
+"courses?name=eq." +
+encodeURIComponent(course) +
+"&select=id,name,price",
+
+{
+method:"GET",
+headers:getHeaders()
+}
+
+);
+
+
+if (!courseResponse.ok) {
+
+const text =
+await courseResponse.text();
+
+throw new Error(
+"Course lookup failed: " + text
+);
+
+}
+
+
+const courseData =
+await courseResponse.json();
+
+
+if (
+!Array.isArray(courseData) ||
+courseData.length === 0
+) {
+
+throw new Error(
+"Course not found in database."
+);
+
+}
+
+
+currentCourseId =
+courseData[0].id;
+
+currentPrice =
+Number(courseData[0].price);
+
+
+if (!Number.isFinite(currentPrice)) {
+
+throw new Error(
+"Invalid course price."
+);
+
+}
+
+
+selectedCourse.textContent =
+courseData[0].name;
+
+coursePrice.textContent =
+currentPrice.toLocaleString() +
+" ETB";
+
+
+/* =====================================
+   2. CHECK DUPLICATE
+===================================== */
+
+submitButton.textContent =
+"Checking student... ⏳";
+
+
+const duplicateResponse =
+await fetch(
+
+SUPABASE_REST_URL +
+"students?or=(" +
+"email.eq." +
+encodeURIComponent(email) +
+",phone.eq." +
+encodeURIComponent(phone) +
+")" +
+"&select=id,full_name,email,phone",
+
+{
+method:"GET",
+headers:getHeaders()
+}
+
+);
+
+
+if (!duplicateResponse.ok) {
+
+throw new Error(
+"Could not check existing student."
+);
+
+}
+
+
+const existingStudents =
+await duplicateResponse.json();
+
+
+if (
+Array.isArray(existingStudents) &&
+existingStudents.length > 0
+) {
+
+throw new Error(
+"Email ykn phone kun duraan galmaa'eera. Login fayyadami."
+);
+
+}
+
+
+/* =====================================
+   3. CREATE STUDENT ID
+===================================== */
+
+currentStudentId =
+crypto.randomUUID();
+
+
+/* =====================================
+   4. CREATE STUDENT
+===================================== */
+
+submitButton.textContent =
+"Saving registration... ⏳";
+
+
+const studentResponse =
+await fetch(
+
+SUPABASE_REST_URL +
+"students",
+
+{
+
+method:"POST",
+
+headers:{
+...getHeaders(),
+"Prefer":"return=representation"
+},
+
+body:JSON.stringify({
+
+id:currentStudentId,
+
+full_name:full_name,
+
+phone:phone,
+
+email:email,
+
+course:course
+
+})
+
+}
+
+);
+
+
+if (!studentResponse.ok) {
+
+const errorText =
+await studentResponse.text();
+
+throw new Error(
+"Student registration failed: " +
+errorText
+);
+
+}
+
+
+/* =====================================
+   5. TRANSACTION REF
+===================================== */
+
+currentTxRef =
+"BIRUK-" +
+Date.now() +
+"-" +
+crypto
+.randomUUID()
+.slice(0,8);
+
+
+/* =====================================
+   6. CREATE ENROLLMENT
+===================================== */
+
+submitButton.textContent =
+"Creating enrollment... ⏳";
+
+
+const enrollmentResponse =
+await fetch(
+
+SUPABASE_REST_URL +
+"enrollments",
+
+{
+
+method:"POST",
+
+headers:{
+...getHeaders(),
+"Prefer":"return=representation"
+},
+
+/*
+IMPORTANT:
+
+payment_submitted hin jiru.
+
+payment_status:
+pending = hin kaffalle
+submitted = kaffale jedhee erge
+paid = admin mirkaneesse
+rejected = admin didde
+*/
+
+body:JSON.stringify({
+
+student_id:
+currentStudentId,
+
+course_id:
+currentCourseId,
+
+payment_status:
+"pending",
+
+course_access:
+false,
+
+tx_ref:
+currentTxRef
+
+})
+
+}
+
+);
+
+
+if (!enrollmentResponse.ok) {
+
+const errorText =
+await enrollmentResponse.text();
+
+throw new Error(
+"Enrollment creation failed: " +
+errorText
+);
+
+}
+
+
+const enrollmentData =
+await enrollmentResponse.json();
+
+
+if (
+!Array.isArray(enrollmentData) ||
+enrollmentData.length === 0
+) {
+
+throw new Error(
+"Enrollment ID was not returned."
+);
+
+}
+
+
+currentEnrollmentId =
+enrollmentData[0].id;
+
+
+/* =====================================
+   7. LOCAL STORAGE
+===================================== */
+
+localStorage.setItem(
+"student_id",
+currentStudentId
+);
+
+localStorage.setItem(
+"student_name",
+full_name
+);
+
+localStorage.setItem(
+"student_email",
+email
+);
+
+localStorage.setItem(
+"student_phone",
+phone
+);
+
+localStorage.setItem(
+"course_id",
+String(currentCourseId)
+);
+
+localStorage.setItem(
+"course_name",
+courseData[0].name
+);
+
+localStorage.setItem(
+"course_price",
+String(currentPrice)
+);
+
+localStorage.setItem(
+"tx_ref",
+currentTxRef
+);
+
+localStorage.setItem(
+"enrollment_id",
+String(currentEnrollmentId)
+);
+
+localStorage.setItem(
+"payment_status",
+"pending"
+);
+
+localStorage.setItem(
+"course_access",
+"false"
+);
+
+
+/* =====================================
+   8. SHOW PAYMENT
+===================================== */
+
+showMessage(
+message,
+"success",
+"✅ Registration successful!"
+);
+
+paymentSection.style.display =
+"block";
+
+submitButton.textContent =
+"Registration Complete ✓";
+
+submitButton.disabled = true;
+
+paymentSection.scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+catch(error) {
+
+console.error(
+"REGISTRATION ERROR:",
+error
+);
+
+showMessage(
+message,
+"error",
+"❌ " + error.message
+);
+
+submitButton.disabled = false;
+
+submitButton.textContent =
+"Continue to Payment →";
+
+}
+
+});
+
+
+/* =========================================
+   I HAVE PAID
+========================================= */
+
+paidButton.addEventListener(
+"click",
+async function() {
+
+const studentId =
+localStorage.getItem(
+"student_id"
+);
+
+const enrollmentId =
+localStorage.getItem(
+"enrollment_id"
+);
+
+const txRef =
+localStorage.getItem(
+"tx_ref"
+);
+
+
+if (
+!studentId ||
+!enrollmentId ||
+!txRef
+) {
+
+showMessage(
+paymentMessage,
+"error",
+"❌ Registration information was not found. Please register again."
+);
+
+return;
+
+}
+
+
+paidButton.disabled = true;
+
+paidButton.textContent =
+"Submitting... ⏳";
+
+
+try {
+
+/* =====================================
+   CHECK ENROLLMENT
+===================================== */
+
+const checkResponse =
+await fetch(
+
+SUPABASE_REST_URL +
+"enrollments?id=eq." +
+encodeURIComponent(enrollmentId) +
+"&student_id=eq." +
+encodeURIComponent(studentId) +
+"&select=id,payment_status,course_access,tx_ref",
+
+{
+
+method:"GET",
+headers:getHeaders()
+
+}
+
+);
+
+
+if (!checkResponse.ok) {
+
+const errorText =
+await checkResponse.text();
+
+throw new Error(
+"Could not verify enrollment: " +
+errorText
+);
+
+}
+
+
+const checkData =
+await checkResponse.json();
+
+
+if (
+!Array.isArray(checkData) ||
+checkData.length === 0
+) {
+
+throw new Error(
+"Enrollment not found."
+);
+
+}
+
+
+/* =====================================
+   ALREADY SUBMITTED
+===================================== */
+
+if (
+checkData[0].payment_status ===
+"submitted"
+) {
+
+localStorage.setItem(
+"payment_status",
+"submitted"
+);
+
+showMessage(
+paymentMessage,
+"pending",
+"⏳ Payment submission is already waiting for administrator confirmation."
+);
+
+paidButton.textContent =
+"⏳ Waiting for Confirmation";
+
+return;
+
+}
+
+
+/* =====================================
+   ADMIN ALREADY APPROVED
+===================================== */
+
+if (
+checkData[0].payment_status ===
+"paid"
+) {
+
+localStorage.setItem(
+"payment_status",
+"paid"
+);
+
+localStorage.setItem(
+"course_access",
+"true"
+);
+
+showMessage(
+paymentMessage,
+"success",
+"✅ Payment has already been confirmed. Your course is unlocked."
+);
+
+paidButton.textContent =
+"✅ Payment Confirmed";
+
+return;
+
+}
+
+
+/* =====================================
+   UPDATE PAYMENT STATUS
+===================================== */
+
+const response =
+await fetch(
+
+SUPABASE_REST_URL +
+"enrollments?id=eq." +
+encodeURIComponent(enrollmentId) +
+"&student_id=eq." +
+encodeURIComponent(studentId),
+
+{
+
+method:"PATCH",
+
+headers:{
+...getHeaders(),
+"Prefer":"return=representation"
+},
+
+body:JSON.stringify({
+
+payment_status:
+"submitted"
+
+})
+
+}
+
+);
+
+
+if (!response.ok) {
+
+const errorText =
+await response.text();
+
+throw new Error(
+"Payment submission failed: " +
+errorText
+);
+
+}
+
+
+const updatedData =
+await response.json();
+
+
+if (
+!Array.isArray(updatedData) ||
+updatedData.length === 0
+) {
+
+throw new Error(
+"Payment submission was not confirmed."
+);
+
+}
+
+
+/* =====================================
+   SAVE STATUS
+===================================== */
+
+localStorage.setItem(
+"payment_status",
+"submitted"
+);
+
+localStorage.setItem(
+"course_access",
+"false"
+);
+
+
+/* =====================================
+   SUCCESS
+===================================== */
+
+showMessage(
+paymentMessage,
+"pending",
+"✅ Payment submitted successfully. Admin will verify your payment and unlock your course."
+);
+
+paidButton.textContent =
+"⏳ Waiting for Confirmation";
+
+paidButton.disabled = true;
+
+
+console.log(
+"PAYMENT SUBMITTED"
+);
+
+console.log(
+"Student ID:",
+studentId
+);
+
+console.log(
+"Enrollment ID:",
+enrollmentId
+);
+
+console.log(
+"Transaction:",
+txRef
+);
+
+}
+
+catch(error) {
+
+console.error(
+"PAYMENT ERROR:",
+error
+);
+
+showMessage(
+paymentMessage,
+"error",
+"❌ " + error.message
+);
+
+paidButton.disabled = false;
+
+paidButton.textContent =
+"✅ I HAVE PAID";
+
+}
+
+});
+
+</script>
+
+</body>
+</html>

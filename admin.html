@@ -1,0 +1,2094 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Biruk Music Training - Admin Dashboard</title>
+
+<style>
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+    background:
+        linear-gradient(
+            135deg,
+            #f5f7fa,
+            #eef1f5
+        );
+    color: #222;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.header {
+
+    background:
+        linear-gradient(
+            135deg,
+            #080808,
+            #202020
+        );
+
+    color: white;
+
+    padding: 28px 20px;
+
+    box-shadow:
+        0 8px 25px
+        rgba(0,0,0,0.18);
+
+}
+
+.header-content {
+
+    max-width: 1100px;
+
+    margin: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+}
+
+.logo {
+
+    width: 70px;
+
+    height: 70px;
+
+    object-fit: contain;
+
+    border-radius: 15px;
+
+    background: white;
+
+    padding: 5px;
+
+}
+
+.header-text h1 {
+
+    margin: 0;
+
+    font-size: 27px;
+
+}
+
+.header-text p {
+
+    margin: 7px 0 0;
+
+    color: #ccc;
+
+}
+
+
+/* =====================================================
+   MAIN
+===================================================== */
+
+.container {
+
+    max-width: 1100px;
+
+    margin: 35px auto;
+
+    padding:
+        0 20px;
+
+}
+
+
+/* =====================================================
+   TITLE
+===================================================== */
+
+.page-title {
+
+    margin-bottom: 25px;
+
+}
+
+.page-title h2 {
+
+    margin: 0;
+
+    font-size: 30px;
+
+}
+
+.page-title p {
+
+    margin-top: 8px;
+
+    color: #777;
+
+}
+
+
+/* =====================================================
+   DASHBOARD STATS
+===================================================== */
+
+.stats {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 18px;
+
+    margin-bottom: 25px;
+
+}
+
+.stat-card {
+
+    background: white;
+
+    padding: 22px;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 6px 22px
+        rgba(0,0,0,0.07);
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+
+}
+
+.stat-card:hover {
+
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 12px 28px
+        rgba(0,0,0,0.11);
+
+}
+
+.stat-icon {
+
+    width: 55px;
+
+    height: 55px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 14px;
+
+    font-size: 27px;
+
+    background: #f0f0f0;
+
+}
+
+.stat-info span {
+
+    display: block;
+
+    color: #777;
+
+    font-size: 14px;
+
+    margin-bottom: 5px;
+
+}
+
+.stat-info strong {
+
+    font-size: 24px;
+
+}
+
+
+/* =====================================================
+   TOOLBAR
+===================================================== */
+
+.toolbar {
+
+    background: white;
+
+    padding: 18px;
+
+    border-radius: 16px;
+
+    margin-bottom: 22px;
+
+    display: flex;
+
+    gap: 12px;
+
+    justify-content:
+        space-between;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    box-shadow:
+        0 5px 18px
+        rgba(0,0,0,0.06);
+
+}
+
+.search-box {
+
+    flex: 1;
+
+    min-width: 220px;
+
+}
+
+.search-box input {
+
+    width: 100%;
+
+    padding: 13px 16px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 10px;
+
+    font-size: 15px;
+
+    outline: none;
+
+}
+
+.search-box input:focus {
+
+    border-color: #111;
+
+}
+
+.refresh-button {
+
+    border: none;
+
+    padding: 13px 20px;
+
+    border-radius: 10px;
+
+    background: #111;
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: .2s;
+
+}
+
+.refresh-button:hover {
+
+    background: #333;
+
+    transform:
+        translateY(-1px);
+
+}
+
+
+/* =====================================================
+   MESSAGE
+===================================================== */
+
+#message {
+
+    margin-bottom: 20px;
+
+}
+
+.success {
+
+    background: #e5f8eb;
+
+    color: #147a32;
+
+    padding: 15px;
+
+    border-radius: 12px;
+
+    font-weight: bold;
+
+}
+
+.error {
+
+    background: #ffe5e5;
+
+    color: #c00000;
+
+    padding: 15px;
+
+    border-radius: 12px;
+
+    font-weight: bold;
+
+}
+
+.info {
+
+    background: #e8f1ff;
+
+    color: #174ea6;
+
+    padding: 15px;
+
+    border-radius: 12px;
+
+    font-weight: bold;
+
+}
+
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+.loading {
+
+    background: white;
+
+    padding: 50px 20px;
+
+    border-radius: 18px;
+
+    text-align: center;
+
+    color: #777;
+
+    font-size: 17px;
+
+}
+
+
+/* =====================================================
+   STUDENT CARD
+===================================================== */
+
+.card {
+
+    background: white;
+
+    border-radius: 20px;
+
+    padding: 25px;
+
+    margin-bottom: 20px;
+
+    box-shadow:
+        0 7px 25px
+        rgba(0,0,0,0.07);
+
+    border:
+        1px solid #eee;
+
+    animation:
+        fadeIn .4s ease;
+
+}
+
+@keyframes fadeIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(10px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+}
+
+
+/* =====================================================
+   STUDENT HEADER
+===================================================== */
+
+.student-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content:
+        space-between;
+
+    gap: 15px;
+
+    margin-bottom: 20px;
+
+    padding-bottom: 17px;
+
+    border-bottom:
+        1px solid #eee;
+
+}
+
+.student-profile {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+}
+
+.student-avatar {
+
+    width: 52px;
+
+    height: 52px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #111;
+
+    color: white;
+
+    font-size: 23px;
+
+}
+
+.student-name {
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+}
+
+
+/* =====================================================
+   INFORMATION GRID
+===================================================== */
+
+.info-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 12px;
+
+}
+
+.info-item {
+
+    background: #f8f9fa;
+
+    padding: 14px;
+
+    border-radius: 11px;
+
+}
+
+.info-item span {
+
+    display: block;
+
+    color: #777;
+
+    font-size: 13px;
+
+    margin-bottom: 5px;
+
+}
+
+.info-item strong {
+
+    font-size: 15px;
+
+}
+
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+.status-row {
+
+    display: flex;
+
+    gap: 12px;
+
+    flex-wrap: wrap;
+
+    margin-top: 18px;
+
+}
+
+.badge {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    padding: 8px 12px;
+
+    border-radius: 30px;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+}
+
+.badge.pending {
+
+    background: #fff1d8;
+
+    color: #c66b00;
+
+}
+
+.badge.paid {
+
+    background: #e3f8e9;
+
+    color: #147a32;
+
+}
+
+.badge.locked {
+
+    background: #ffe5e5;
+
+    color: #c00000;
+
+}
+
+.badge.unlocked {
+
+    background: #e3f8e9;
+
+    color: #147a32;
+
+}
+
+
+/* =====================================================
+   CONFIRM BUTTON
+===================================================== */
+
+.confirm-button {
+
+    width: 100%;
+
+    margin-top: 20px;
+
+    padding: 15px;
+
+    border: none;
+
+    border-radius: 11px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #168a3a,
+            #0f6c2d
+        );
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: .2s;
+
+}
+
+.confirm-button:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 7px 18px
+        rgba(22,138,58,.25);
+
+}
+
+.confirm-button:disabled {
+
+    background: #999;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+    box-shadow: none;
+
+}
+
+
+/* =====================================================
+   EMPTY
+===================================================== */
+
+.empty {
+
+    background: white;
+
+    padding: 55px 20px;
+
+    text-align: center;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 5px 18px
+        rgba(0,0,0,0.06);
+
+}
+
+.empty-icon {
+
+    font-size: 50px;
+
+    margin-bottom: 12px;
+
+}
+
+.empty h3 {
+
+    margin: 5px 0;
+
+}
+
+.empty p {
+
+    color: #777;
+
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.footer {
+
+    text-align: center;
+
+    padding: 30px 15px;
+
+    margin-top: 50px;
+
+    background: #111;
+
+    color: white;
+
+}
+
+.footer p {
+
+    color: #aaa;
+
+    margin-bottom: 0;
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 750px) {
+
+    .header {
+
+        padding: 22px 15px;
+
+    }
+
+    .header-content {
+
+        align-items: flex-start;
+
+    }
+
+    .logo {
+
+        width: 58px;
+
+        height: 58px;
+
+    }
+
+    .header-text h1 {
+
+        font-size: 21px;
+
+    }
+
+    .header-text p {
+
+        font-size: 13px;
+
+    }
+
+    .container {
+
+        margin-top: 25px;
+
+        padding:
+            0 14px;
+
+    }
+
+    .page-title h2 {
+
+        font-size: 24px;
+
+    }
+
+    .stats {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .info-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .student-header {
+
+        align-items: flex-start;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="header">
+
+    <div class="header-content">
+
+        <img
+            src="logo.png"
+            alt="Biruk Music Training Logo"
+            class="logo"
+        >
+
+        <div class="header-text">
+
+            <h1>
+                Biruk Music Training
+            </h1>
+
+            <p>
+                Professional Admin Payment Dashboard
+            </p>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="container">
+
+
+    <div class="page-title">
+
+        <h2>
+            👨‍💼 Admin Dashboard
+        </h2>
+
+        <p>
+            Manage student registrations,
+            payments and course access.
+        </p>
+
+    </div>
+
+
+    <!-- =================================================
+         STATS
+    ================================================== -->
+
+    <section class="stats">
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                👨‍🎓
+            </div>
+
+            <div class="stat-info">
+
+                <span>
+                    Total Enrollments
+                </span>
+
+                <strong
+                    id="totalCount">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                ⏳
+            </div>
+
+            <div class="stat-info">
+
+                <span>
+                    Pending Payments
+                </span>
+
+                <strong
+                    id="pendingCount">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <div class="stat-icon">
+                🔓
+            </div>
+
+            <div class="stat-info">
+
+                <span>
+                    Unlocked Courses
+                </span>
+
+                <strong
+                    id="unlockedCount">
+                    0
+                </strong>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =================================================
+         TOOLBAR
+    ================================================== -->
+
+    <section class="toolbar">
+
+        <div class="search-box">
+
+            <input
+                type="search"
+                id="searchInput"
+                placeholder="🔎 Search student name, phone or course..."
+            >
+
+        </div>
+
+
+        <button
+            class="refresh-button"
+            id="refreshButton"
+            type="button">
+
+            🔄 Refresh
+
+        </button>
+
+    </section>
+
+
+    <div id="message"></div>
+
+
+    <!-- =================================================
+         STUDENTS
+    ================================================== -->
+
+    <section
+        id="studentsContainer">
+
+        <div class="loading">
+
+            Loading students... ⏳
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+    <strong>
+        Biruk Music Training Center
+    </strong>
+
+    <p>
+        PLAY. LEARN. GROW.
+    </p>
+
+</footer>
+
+
+<script>
+
+/* =====================================================
+   SUPABASE CONFIGURATION
+===================================================== */
+
+const SUPABASE_URL =
+"https://ronwmcvqsksvbmbkaqgb.supabase.co";
+
+const SUPABASE_REST_URL =
+SUPABASE_URL + "/rest/v1/";
+
+const SUPABASE_PUBLISHABLE_KEY =
+"sb_publishable_PWLxrjF2dDUKDrApUJM1dQ_e9BfxDqO";
+
+
+/* =====================================================
+   EDGE FUNCTION
+===================================================== */
+
+const CONFIRM_PAYMENT_URL =
+SUPABASE_URL +
+"/functions/v1/confirm-payment";
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const studentsContainer =
+document.getElementById(
+    "studentsContainer"
+);
+
+const totalCount =
+document.getElementById(
+    "totalCount"
+);
+
+const pendingCount =
+document.getElementById(
+    "pendingCount"
+);
+
+const unlockedCount =
+document.getElementById(
+    "unlockedCount"
+);
+
+const message =
+document.getElementById(
+    "message"
+);
+
+const refreshButton =
+document.getElementById(
+    "refreshButton"
+);
+
+const searchInput =
+document.getElementById(
+    "searchInput"
+);
+
+
+/* =====================================================
+   DATA
+===================================================== */
+
+let allEnrollmentData = [];
+
+
+/* =====================================================
+   HEADERS
+===================================================== */
+
+function getHeaders() {
+
+    return {
+
+        "apikey":
+            SUPABASE_PUBLISHABLE_KEY,
+
+        "Authorization":
+            "Bearer " +
+            SUPABASE_PUBLISHABLE_KEY,
+
+        "Content-Type":
+            "application/json",
+
+        "Accept":
+            "application/json"
+
+    };
+
+}
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHTML(value) {
+
+    return String(value ?? "")
+
+        .replaceAll(
+            "&",
+            "&amp;"
+        )
+
+        .replaceAll(
+            "<",
+            "&lt;"
+        )
+
+        .replaceAll(
+            ">",
+            "&gt;"
+        )
+
+        .replaceAll(
+            '"',
+            "&quot;"
+        )
+
+        .replaceAll(
+            "'",
+            "&#039;"
+        );
+
+}
+
+
+/* =====================================================
+   MESSAGE
+===================================================== */
+
+function showMessage(
+    type,
+    text
+) {
+
+    message.innerHTML = `
+
+        <div class="${type}">
+
+            ${escapeHTML(text)}
+
+        </div>
+
+    `;
+
+}
+
+
+/* =====================================================
+   LOAD STUDENTS
+===================================================== */
+
+async function loadStudents() {
+
+    studentsContainer.innerHTML = `
+
+        <div class="loading">
+
+            Loading students... ⏳
+
+        </div>
+
+    `;
+
+    message.innerHTML = "";
+
+
+    try {
+
+        /* =============================================
+           ENROLLMENTS
+        ============================================= */
+
+        const enrollmentResponse =
+            await fetch(
+
+                SUPABASE_REST_URL +
+                "enrollments?select=*",
+
+                {
+
+                    method: "GET",
+
+                    headers:
+                        getHeaders()
+
+                }
+
+            );
+
+
+        if (!enrollmentResponse.ok) {
+
+            throw new Error(
+                await enrollmentResponse.text()
+            );
+
+        }
+
+
+        const enrollments =
+            await enrollmentResponse.json();
+
+
+        /* =============================================
+           STUDENTS
+        ============================================= */
+
+        const studentResponse =
+            await fetch(
+
+                SUPABASE_REST_URL +
+                "students?select=*",
+
+                {
+
+                    method: "GET",
+
+                    headers:
+                        getHeaders()
+
+                }
+
+            );
+
+
+        if (!studentResponse.ok) {
+
+            throw new Error(
+                await studentResponse.text()
+            );
+
+        }
+
+
+        const students =
+            await studentResponse.json();
+
+
+        /* =============================================
+           COURSES
+        ============================================= */
+
+        const courseResponse =
+            await fetch(
+
+                SUPABASE_REST_URL +
+                "courses?select=*",
+
+                {
+
+                    method: "GET",
+
+                    headers:
+                        getHeaders()
+
+                }
+
+            );
+
+
+        if (!courseResponse.ok) {
+
+            throw new Error(
+                await courseResponse.text()
+            );
+
+        }
+
+
+        const courses =
+            await courseResponse.json();
+
+
+        /* =============================================
+           COMBINE DATA
+        ============================================= */
+
+        allEnrollmentData =
+            enrollments.map(
+                enrollment => {
+
+                    const student =
+                        students.find(
+                            item =>
+                                String(item.id) ===
+                                String(
+                                    enrollment.student_id
+                                )
+                        );
+
+
+                    const course =
+                        courses.find(
+                            item =>
+                                String(item.id) ===
+                                String(
+                                    enrollment.course_id
+                                )
+                        );
+
+
+                    return {
+
+                        enrollment,
+
+                        student,
+
+                        course
+
+                    };
+
+                }
+            );
+
+
+        updateStats();
+
+        renderStudents(
+            allEnrollmentData
+        );
+
+    }
+
+
+    catch(error) {
+
+        console.error(
+            "LOAD ERROR:",
+            error
+        );
+
+
+        totalCount.textContent =
+            "0";
+
+        pendingCount.textContent =
+            "0";
+
+        unlockedCount.textContent =
+            "0";
+
+
+        studentsContainer.innerHTML = `
+
+            <div class="error">
+
+                ❌
+                ${escapeHTML(
+                    error.message ||
+                    "Failed to load students."
+                )}
+
+            </div>
+
+        `;
+
+    }
+
+}
+
+
+/* =====================================================
+   UPDATE STATS
+===================================================== */
+
+function updateStats() {
+
+    const total =
+        allEnrollmentData.length;
+
+
+    const pending =
+        allEnrollmentData.filter(
+            item =>
+                item.enrollment.payment_status !==
+                "paid"
+        ).length;
+
+
+    const unlocked =
+        allEnrollmentData.filter(
+            item =>
+                item.enrollment.course_access === true
+        ).length;
+
+
+    totalCount.textContent =
+        total;
+
+
+    pendingCount.textContent =
+        pending;
+
+
+    unlockedCount.textContent =
+        unlocked;
+
+}
+
+
+/* =====================================================
+   RENDER STUDENTS
+===================================================== */
+
+function renderStudents(
+    data
+) {
+
+    if (
+        !data ||
+        data.length === 0
+    ) {
+
+        studentsContainer.innerHTML = `
+
+            <div class="empty">
+
+                <div class="empty-icon">
+                    📭
+                </div>
+
+                <h3>
+                    No Students Found
+                </h3>
+
+                <p>
+                    There are no enrollments
+                    to display.
+                </p>
+
+            </div>
+
+        `;
+
+        return;
+
+    }
+
+
+    studentsContainer.innerHTML = "";
+
+
+    data.forEach(
+        item => {
+
+            const enrollment =
+                item.enrollment;
+
+            const student =
+                item.student;
+
+            const course =
+                item.course;
+
+
+            const studentName =
+                student?.full_name ||
+                "Unknown Student";
+
+
+            const phone =
+                student?.phone ||
+                "-";
+
+
+            const email =
+                student?.email ||
+                "-";
+
+
+            const courseName =
+                course?.name ||
+                "Unknown Course";
+
+
+            const price =
+                Number(
+                    course?.price || 0
+                );
+
+
+            const status =
+                enrollment.payment_status ||
+                "pending";
+
+
+            const access =
+                enrollment.course_access === true;
+
+
+            const card =
+                document.createElement(
+                    "article"
+                );
+
+
+            card.className =
+                "card";
+
+
+            card.dataset.search =
+                (
+
+                    studentName +
+                    " " +
+                    phone +
+                    " " +
+                    email +
+                    " " +
+                    courseName
+
+                ).toLowerCase();
+
+
+            card.innerHTML = `
+
+                <div class="student-header">
+
+                    <div class="student-profile">
+
+                        <div class="student-avatar">
+
+                            👤
+
+                        </div>
+
+                        <div>
+
+                            <div class="student-name">
+
+                                ${escapeHTML(
+                                    studentName
+                                )}
+
+                            </div>
+
+                            <small>
+                                Student Registration
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="info-grid">
+
+
+                    <div class="info-item">
+
+                        <span>
+                            📱 Phone
+                        </span>
+
+                        <strong>
+                            ${escapeHTML(
+                                phone
+                            )}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-item">
+
+                        <span>
+                            📧 Email
+                        </span>
+
+                        <strong>
+                            ${escapeHTML(
+                                email
+                            )}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-item">
+
+                        <span>
+                            🎓 Course
+                        </span>
+
+                        <strong>
+                            ${escapeHTML(
+                                courseName
+                            )}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-item">
+
+                        <span>
+                            💰 Course Fee
+                        </span>
+
+                        <strong>
+                            ${price.toLocaleString()}
+                            ETB
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-item">
+
+                        <span>
+                            🔑 Transaction Ref
+                        </span>
+
+                        <strong>
+                            ${escapeHTML(
+                                enrollment.tx_ref ||
+                                "-"
+                            )}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="info-item">
+
+                        <span>
+                            🆔 Enrollment ID
+                        </span>
+
+                        <strong>
+                            ${escapeHTML(
+                                enrollment.id ||
+                                "-"
+                            )}
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="status-row">
+
+                    <span class="badge ${
+                        status === "paid"
+                        ? "paid"
+                        : "pending"
+                    }">
+
+                        ${
+                            status === "paid"
+                            ? "✅ PAID"
+                            : "⏳ PAYMENT PENDING"
+                        }
+
+                    </span>
+
+
+                    <span class="badge ${
+                        access
+                        ? "unlocked"
+                        : "locked"
+                    }">
+
+                        ${
+                            access
+                            ? "🔓 COURSE UNLOCKED"
+                            : "🔒 COURSE LOCKED"
+                        }
+
+                    </span>
+
+                </div>
+
+            `;
+
+
+            /* =========================================
+               CONFIRM BUTTON
+            ========================================= */
+
+            if (
+                status !== "paid"
+            ) {
+
+                const button =
+                    document.createElement(
+                        "button"
+                    );
+
+
+                button.type =
+                    "button";
+
+
+                button.className =
+                    "confirm-button";
+
+
+                button.textContent =
+                    "✅ CONFIRM PAYMENT";
+
+
+                button.onclick =
+                    function() {
+
+                        confirmPayment(
+                            enrollment.id,
+                            button
+                        );
+
+                    };
+
+
+                card.appendChild(
+                    button
+                );
+
+            }
+
+
+            else {
+
+                const info =
+                    document.createElement(
+                        "div"
+                    );
+
+
+                info.className =
+                    access
+                    ? "success"
+                    : "info";
+
+
+                info.style.marginTop =
+                    "20px";
+
+
+                info.textContent =
+                    access
+
+                    ? "✅ Payment confirmed — Course access is unlocked."
+
+                    : "⚠️ Payment is paid, but course access is still locked.";
+
+
+                card.appendChild(
+                    info
+                );
+
+            }
+
+
+            studentsContainer.appendChild(
+                card
+            );
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   CONFIRM PAYMENT
+===================================================== */
+
+async function confirmPayment(
+    enrollmentId,
+    button
+) {
+
+    const confirmed =
+        window.confirm(
+            "Kaffaltii kana mirkaneessuu barbaaddaa?"
+        );
+
+
+    if (!confirmed) {
+
+        return;
+
+    }
+
+
+    button.disabled =
+        true;
+
+
+    button.textContent =
+        "Confirming... ⏳";
+
+
+    try {
+
+        const response =
+            await fetch(
+
+                CONFIRM_PAYMENT_URL,
+
+                {
+
+                    method: "POST",
+
+                    headers: {
+
+                        "Content-Type":
+                            "application/json",
+
+                        "apikey":
+                            SUPABASE_PUBLISHABLE_KEY,
+
+                        "Authorization":
+                            "Bearer " +
+                            SUPABASE_PUBLISHABLE_KEY
+
+                    },
+
+                    body:
+                        JSON.stringify({
+
+                            enrollment_id:
+                                enrollmentId
+
+                        })
+
+                }
+
+            );
+
+
+        const text =
+            await response.text();
+
+
+        let result = {};
+
+
+        try {
+
+            result =
+                text
+                ? JSON.parse(text)
+                : {};
+
+        }
+
+        catch {
+
+            result = {
+
+                success: false,
+
+                error:
+                    text ||
+                    "Invalid server response."
+
+            };
+
+        }
+
+
+        if (!response.ok) {
+
+            throw new Error(
+
+                result.error ||
+                result.message ||
+                `Server returned HTTP ${response.status}`
+
+            );
+
+        }
+
+
+        if (
+            result.success !== true
+        ) {
+
+            throw new Error(
+
+                result.error ||
+                "Payment confirmation failed."
+
+            );
+
+        }
+
+
+        showMessage(
+
+            "success",
+
+            "✅ Payment confirmed successfully. Course unlocked."
+
+        );
+
+
+        await loadStudents();
+
+    }
+
+
+    catch(error) {
+
+        console.error(
+            "CONFIRM PAYMENT ERROR:",
+            error
+        );
+
+
+        showMessage(
+
+            "error",
+
+            "❌ " +
+            (
+                error.message ||
+                "Payment confirmation failed."
+            )
+
+        );
+
+
+        button.disabled =
+            false;
+
+
+        button.textContent =
+            "✅ CONFIRM PAYMENT";
+
+    }
+
+}
+
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+searchInput.addEventListener(
+    "input",
+    function() {
+
+        const query =
+            this.value
+            .trim()
+            .toLowerCase();
+
+
+        if (!query) {
+
+            renderStudents(
+                allEnrollmentData
+            );
+
+            return;
+
+        }
+
+
+        const filtered =
+            allEnrollmentData.filter(
+                item => {
+
+                    const student =
+                        item.student;
+
+                    const course =
+                        item.course;
+
+                    const enrollment =
+                        item.enrollment;
+
+
+                    const text = (
+
+                        student?.full_name +
+                        " " +
+                        student?.phone +
+                        " " +
+                        student?.email +
+                        " " +
+                        course?.name +
+                        " " +
+                        enrollment?.tx_ref
+
+                    ).toLowerCase();
+
+
+                    return text.includes(
+                        query
+                    );
+
+                }
+            );
+
+
+        renderStudents(
+            filtered
+        );
+
+    }
+);
+
+
+/* =====================================================
+   REFRESH
+===================================================== */
+
+refreshButton.onclick =
+    async function() {
+
+        refreshButton.disabled =
+            true;
+
+        refreshButton.textContent =
+            "Refreshing... ⏳";
+
+
+        await loadStudents();
+
+
+        refreshButton.disabled =
+            false;
+
+        refreshButton.textContent =
+            "🔄 Refresh";
+
+    };
+
+
+/* =====================================================
+   INITIAL LOAD
+===================================================== */
+
+loadStudents();
+
+</script>
+
+
+</body>
+
+</html>

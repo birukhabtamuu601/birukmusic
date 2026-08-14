@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Student Login - Biruk Music Training</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+.login-message {
+    margin-top: 20px;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.success {
+    background: #eaf8ee;
+    color: #168a3a;
+}
+
+.warning {
+    background: #fff4df;
+    color: #b36b00;
+}
+
+.error {
+    background: #ffe5e5;
+    color: #c00000;
+}
+
+.login-info {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    background: #f2f2f2;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<section class="register">
+
+    <h1>🎓 Student Login</h1>
+
+    <p>
+        Biruk Music Training Center
+    </p>
+
+    <form id="loginForm">
+
+        <input
+            type="email"
+            id="email"
+            placeholder="Email Address"
+            required
+        >
+
+        <input
+            type="tel"
+            id="phone"
+            placeholder="Phone Number"
+            required
+        >
+
+        <button
+            type="submit"
+            id="loginButton"
+        >
+            🔐 Login
+        </button>
+
+    </form>
+
+    <div id="message"></div>
+
+    <p>
+        Hin galmoofne?
+
+        <a href="Register.html">
+            Register Now
+        </a>
+    </p>
+
+</section>
+
+
+<script>
+
+/* =========================================
+   SUPABASE SETTINGS
+========================================= */
+
+const SUPABASE_URL =
+    "https://ronwmcvqsksvbmbkaqgb.supabase.co";
+
+const SUPABASE_REST_URL =
+    SUPABASE_URL + "/rest/v1/";
+
+const SUPABASE_PUBLISHABLE_KEY =
+    "sb_publishable_PWLxrjF2dDUKDrApUJM1dQ_e9BfxDqO";
+
+
+/* =========================================
+   ELEMENTS
+========================================= */
+
+const loginForm =
+    document.getElementById("loginForm");
+
+const emailInput =
+    document.getElementById("email");
+
+const phoneInput =
+    document.getElementById("phone");
+
+const loginButton =
+    document.getElementById("loginButton");
+
+const message =
+    document.getElementById("message");
+
+
+/* =========================================
+   MESSAGE
+========================================= */
+
+function showMessage(type, text) {
+
+    message.className =
+        "login-message " + type;
+
+    message.textContent =
+        text;
+
+}
+
+
+/* =========================================
+   SUPABASE HEADERS
+========================================= */
+
+function getHeaders() {
+
+    return {
+
+        "apikey":
+            SUPABASE_PUBLISHABLE_KEY,
+
+        "Authorization":
+            "Bearer " +
+            SUPABASE_PUBLISHABLE_KEY,
+
+        "Content-Type":
+            "application/json",
+
+        "Accept":
+            "application/json"
+
+    };
+
+}
+
+
+/* =========================================
+   CLEAR OLD LOGIN
+========================================= */
+
+function clearLoginData() {
+
+    localStorage.removeItem("student_id");
+    localStorage.removeItem("course_id");
+    localStorage.removeItem("enrollment_id");
+    localStorage.removeItem("student_name");
+    localStorage.removeItem("student_email");
+    localStorage.removeItem("student_phone");
+    localStorage.removeItem("course_name");
+    localStorage.removeItem("course_price");
+    localStorage.removeItem("course_paid");
+    localStorage.removeItem("course_access");
+
+}
+
+
+/* =========================================
+   LOGIN
+========================================= */
+
+loginForm.addEventListener(
+    "submit",
+    async function(event) {
+
+        event.preventDefault();
+
+
+        const email =
+            emailInput.value
+            .trim()
+            .toLowerCase();
+
+        const phone =
+            phoneInput.value
+            .trim();
+
+
+        if (!email || !phone) {
+
+            showMessage(
+                "error",
+                "❌ Email fi phone guuti."
+            );
+
+            return;
+
+        }
+
+
+        clearLoginData();
+
+
+        loginButton.disabled =
+            true;
+
+        loginButton.textContent =
+            "Checking... ⏳";
+
+        message.textContent = "";
+
+
+        try {
+
+            /* =================================
+               1. FIND STUDENT
+            ================================= */
+
+            const studentURL =
+                SUPABASE_REST_URL +
+                "students" +
+                "?email=eq." +
+                encodeURIComponent(email) +
+                "&phone=eq." +
+                encodeURIComponent(phone) +
+                "&select=id,full_name,email,phone";
+
+
+            const studentResponse =
+                await fetch(
+                    studentURL,
+                    {
+                        method: "GET",
+                        headers: getHeaders()
+                    }
+                );
+
+
+            if (!studentResponse.ok) {
+
+                throw new Error(
+                    "Student data could not be loaded."
+                );
+
+            }
+
+
+            const students =
+                await studentResponse.json();
+
+
+            if (
+                !students ||
+                students.length === 0
+            ) {
+
+                throw new Error(
+                    "Email ykn phone sirrii miti."
+                );
+
+            }
+
+
+            const student =
+                students[0];
+
+
+            /* =================================
+               2. FIND ENROLLMENT
+            ================================= */
+
+            const enrollmentURL =
+                SUPABASE_REST_URL +
+                "enrollments" +
+                "?student_id=eq." +
+                encodeURIComponent(student.id) +
+                "&select=id,student_id,course_id,payment_status,course_access,created_at";
+
+
+            const enrollmentResponse =
+                await fetch(
+                    enrollmentURL,
+                    {
+                        method: "GET",
+                        headers: getHeaders()
+                    }
+                );
+
+
+            if (!enrollmentResponse.ok) {
+
+                throw new Error(
+                    "Enrollment data could not be loaded."
+                );
+
+            }
+
+
+            const enrollments =
+                await enrollmentResponse.json();
+
+
+            if (
+                !enrollments ||
+                enrollments.length === 0
+            ) {
+
+                throw new Error(
+                    "Course registration hin argamne."
+                );
+
+            }
+
+
+            /* =================================
+               3. GET LATEST ENROLLMENT
+            ================================= */
+
+            enrollments.sort(
+                function(a, b) {
+
+                    return (
+                        new Date(
+                            b.created_at || 0
+                        ) -
+                        new Date(
+                            a.created_at || 0
+                        )
+                    );
+
+                }
+            );
+
+
+            const enrollment =
+                enrollments[0];
+
+
+            /* =================================
+               4. GET COURSE
+            ================================= */
+
+            const courseURL =
+                SUPABASE_REST_URL +
+                "courses" +
+                "?id=eq." +
+                encodeURIComponent(
+                    enrollment.course_id
+                ) +
+                "&select=id,name,price";
+
+
+            const courseResponse =
+                await fetch(
+                    courseURL,
+                    {
+                        method: "GET",
+                        headers: getHeaders()
+                    }
+                );
+
+
+            if (!courseResponse.ok) {
+
+                throw new Error(
+                    "Course data could not be loaded."
+                );
+
+            }
+
+
+            const courses =
+                await courseResponse.json();
+
+
+            if (
+                !courses ||
+                courses.length === 0
+            ) {
+
+                throw new Error(
+                    "Course hin argamne."
+                );
+
+            }
+
+
+            const course =
+                courses[0];
+
+
+            /* =================================
+               5. CHECK PAYMENT
+            ================================= */
+
+            const isPaid =
+                String(
+                    enrollment.payment_status || ""
+                ).toLowerCase() === "paid";
+
+
+            const isUnlocked =
+                enrollment.course_access === true;
+
+
+            /* =================================
+               6. SAVE STUDENT DATA
+            ================================= */
+
+            localStorage.setItem(
+                "student_id",
+                String(student.id)
+            );
+
+            localStorage.setItem(
+                "student_name",
+                student.full_name || ""
+            );
+
+            localStorage.setItem(
+                "student_email",
+                student.email || ""
+            );
+
+            localStorage.setItem(
+                "student_phone",
+                student.phone || ""
+            );
+
+            localStorage.setItem(
+                "course_id",
+                String(enrollment.course_id)
+            );
+
+            localStorage.setItem(
+                "enrollment_id",
+                String(enrollment.id)
+            );
+
+            localStorage.setItem(
+                "course_name",
+                course.name || ""
+            );
+
+            localStorage.setItem(
+                "course_price",
+                String(course.price || "")
+            );
+
+            localStorage.setItem(
+                "course_paid",
+                String(isPaid)
+            );
+
+            localStorage.setItem(
+                "course_access",
+                String(isUnlocked)
+            );
+
+
+            /* =================================
+               7. PAYMENT + ACCESS APPROVED
+            ================================= */
+
+            if (
+                isPaid &&
+                isUnlocked
+            ) {
+
+                showMessage(
+                    "success",
+                    "✅ Login successful! Course unlocked."
+                );
+
+
+                loginButton.textContent =
+                    "✅ Access Granted";
+
+
+                setTimeout(
+                    function() {
+
+                        window.location.href =
+                            "Course.html";
+
+                    },
+                    700
+                );
+
+
+                return;
+
+            }
+
+
+            /* =================================
+               8. PAYMENT NOT APPROVED
+            ================================= */
+
+            clearLoginData();
+
+
+            showMessage(
+                "warning",
+                "⏳ Kaffaltiin kee ammallee hin mirkanoofne. Admin confirmation eegi."
+            );
+
+
+            loginButton.disabled =
+                false;
+
+            loginButton.textContent =
+                "🔐 Login";
+
+        }
+
+
+        catch(error) {
+
+            console.error(
+                "LOGIN ERROR:",
+                error
+            );
+
+
+            clearLoginData();
+
+
+            showMessage(
+                "error",
+                "❌ " +
+                (
+                    error.message ||
+                    "Login failed."
+                )
+            );
+
+
+            loginButton.disabled =
+                false;
+
+            loginButton.textContent =
+                "🔐 Login";
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+
+</html>
