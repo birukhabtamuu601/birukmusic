@@ -41,6 +41,169 @@ body {
 
 
 /* =====================================================
+   ADMIN LOGIN
+===================================================== */
+
+#adminLogin {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 99999;
+
+    background:
+        linear-gradient(
+            135deg,
+            #080808,
+            #222
+        );
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+}
+
+
+.admin-login-box {
+
+    width: 100%;
+
+    max-width: 420px;
+
+    background: white;
+
+    padding: 30px;
+
+    border-radius: 22px;
+
+    box-shadow:
+        0 20px 60px
+        rgba(0,0,0,.5);
+
+    text-align: center;
+
+}
+
+
+.admin-login-logo {
+
+    width: 90px;
+
+    height: 90px;
+
+    object-fit: contain;
+
+    background: white;
+
+    border-radius: 18px;
+
+    padding: 6px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.admin-login-box h2 {
+
+    margin:
+        5px 0 8px;
+
+}
+
+
+.admin-login-box p {
+
+    color: #777;
+
+}
+
+
+#adminPassword {
+
+    width: 100%;
+
+    padding: 15px;
+
+    border:
+        1px solid #ddd;
+
+    border-radius: 11px;
+
+    margin-top: 15px;
+
+    font-size: 16px;
+
+    outline: none;
+
+}
+
+
+#adminPassword:focus {
+
+    border-color: #111;
+
+}
+
+
+#adminLoginButton {
+
+    width: 100%;
+
+    padding: 15px;
+
+    margin-top: 15px;
+
+    border: 0;
+
+    border-radius: 11px;
+
+    background: #111;
+
+    color: white;
+
+    font-weight: bold;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+}
+
+
+#adminLoginButton:hover {
+
+    background: #333;
+
+}
+
+
+#adminLoginError {
+
+    display: none;
+
+    margin-top: 15px;
+
+    padding: 12px;
+
+    border-radius: 10px;
+
+    background: #ffe5e5;
+
+    color: #c00000;
+
+    font-weight: bold;
+
+}
+
+
+/* =====================================================
    HEADER
 ===================================================== */
 
@@ -63,6 +226,7 @@ body {
 
 }
 
+
 .header-content {
 
     max-width: 1100px;
@@ -75,7 +239,10 @@ body {
 
     gap: 18px;
 
+    flex-wrap: wrap;
+
 }
+
 
 .logo {
 
@@ -93,6 +260,14 @@ body {
 
 }
 
+
+.header-text {
+
+    flex: 1;
+
+}
+
+
 .header-text h1 {
 
     margin: 0;
@@ -101,11 +276,44 @@ body {
 
 }
 
+
 .header-text p {
 
-    margin: 7px 0 0;
+    margin:
+        7px 0 0;
 
     color: #ccc;
+
+}
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+#adminLogoutButton {
+
+    padding: 12px 16px;
+
+    border:
+        1px solid #555;
+
+    border-radius: 10px;
+
+    background: #111;
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+}
+
+
+#adminLogoutButton:hover {
+
+    background: #333;
 
 }
 
@@ -136,6 +344,7 @@ body {
 
 }
 
+
 .page-title h2 {
 
     margin: 0;
@@ -143,6 +352,7 @@ body {
     font-size: 30px;
 
 }
+
 
 .page-title p {
 
@@ -170,6 +380,7 @@ body {
 
 }
 
+
 .stat-card {
 
     background: white;
@@ -194,6 +405,7 @@ body {
 
 }
 
+
 .stat-card:hover {
 
     transform:
@@ -204,6 +416,7 @@ body {
         rgba(0,0,0,0.11);
 
 }
+
 
 .stat-icon {
 
@@ -225,6 +438,7 @@ body {
 
 }
 
+
 .stat-info span {
 
     display: block;
@@ -236,6 +450,7 @@ body {
     margin-bottom: 5px;
 
 }
+
 
 .stat-info strong {
 
@@ -275,6 +490,7 @@ body {
 
 }
 
+
 .search-box {
 
     flex: 1;
@@ -283,13 +499,15 @@ body {
 
 }
 
+
 .search-box input {
 
     width: 100%;
 
     padding: 13px 16px;
 
-    border: 1px solid #ddd;
+    border:
+        1px solid #ddd;
 
     border-radius: 10px;
 
@@ -299,11 +517,13 @@ body {
 
 }
 
+
 .search-box input:focus {
 
     border-color: #111;
 
 }
+
 
 .refresh-button {
 
@@ -325,12 +545,22 @@ body {
 
 }
 
+
 .refresh-button:hover {
 
     background: #333;
 
     transform:
         translateY(-1px);
+
+}
+
+
+.refresh-button:disabled {
+
+    opacity: .65;
+
+    cursor: not-allowed;
 
 }
 
@@ -344,6 +574,7 @@ body {
     margin-bottom: 20px;
 
 }
+
 
 .success {
 
@@ -359,6 +590,7 @@ body {
 
 }
 
+
 .error {
 
     background: #ffe5e5;
@@ -372,6 +604,7 @@ body {
     font-weight: bold;
 
 }
+
 
 .info {
 
@@ -435,6 +668,7 @@ body {
 
 }
 
+
 @keyframes fadeIn {
 
     from {
@@ -482,6 +716,7 @@ body {
 
 }
 
+
 .student-profile {
 
     display: flex;
@@ -491,6 +726,7 @@ body {
     gap: 13px;
 
 }
+
 
 .student-avatar {
 
@@ -513,6 +749,7 @@ body {
     font-size: 23px;
 
 }
+
 
 .student-name {
 
@@ -538,6 +775,7 @@ body {
 
 }
 
+
 .info-item {
 
     background: #f8f9fa;
@@ -546,7 +784,10 @@ body {
 
     border-radius: 11px;
 
+    overflow-wrap: anywhere;
+
 }
+
 
 .info-item span {
 
@@ -559,6 +800,7 @@ body {
     margin-bottom: 5px;
 
 }
+
 
 .info-item strong {
 
@@ -583,6 +825,7 @@ body {
 
 }
 
+
 .badge {
 
     display: inline-flex;
@@ -601,6 +844,7 @@ body {
 
 }
 
+
 .badge.pending {
 
     background: #fff1d8;
@@ -608,6 +852,7 @@ body {
     color: #c66b00;
 
 }
+
 
 .badge.paid {
 
@@ -617,6 +862,7 @@ body {
 
 }
 
+
 .badge.locked {
 
     background: #ffe5e5;
@@ -624,6 +870,7 @@ body {
     color: #c00000;
 
 }
+
 
 .badge.unlocked {
 
@@ -669,6 +916,7 @@ body {
 
 }
 
+
 .confirm-button:hover {
 
     transform:
@@ -679,6 +927,7 @@ body {
         rgba(22,138,58,.25);
 
 }
+
 
 .confirm-button:disabled {
 
@@ -713,6 +962,7 @@ body {
 
 }
 
+
 .empty-icon {
 
     font-size: 50px;
@@ -721,11 +971,13 @@ body {
 
 }
 
+
 .empty h3 {
 
     margin: 5px 0;
 
 }
+
 
 .empty p {
 
@@ -752,6 +1004,7 @@ body {
 
 }
 
+
 .footer p {
 
     color: #aaa;
@@ -769,15 +1022,19 @@ body {
 
     .header {
 
-        padding: 22px 15px;
+        padding:
+            22px 15px;
 
     }
+
 
     .header-content {
 
-        align-items: flex-start;
+        align-items:
+            flex-start;
 
     }
+
 
     .logo {
 
@@ -787,17 +1044,29 @@ body {
 
     }
 
+
     .header-text h1 {
 
         font-size: 21px;
 
     }
 
+
     .header-text p {
 
         font-size: 13px;
 
     }
+
+
+    #adminLogoutButton {
+
+        width: 100%;
+
+        margin-left: 0;
+
+    }
+
 
     .container {
 
@@ -808,27 +1077,70 @@ body {
 
     }
 
+
     .page-title h2 {
 
         font-size: 24px;
 
     }
 
+
     .stats {
 
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            1fr;
 
     }
+
 
     .info-grid {
 
-        grid-template-columns: 1fr;
+        grid-template-columns:
+            1fr;
 
     }
 
+
     .student-header {
 
-        align-items: flex-start;
+        align-items:
+            flex-start;
+
+    }
+
+}
+
+
+/* =====================================================
+   SMALL PHONE
+===================================================== */
+
+@media (max-width: 420px) {
+
+    .card {
+
+        padding: 18px;
+
+    }
+
+
+    .toolbar {
+
+        padding: 14px;
+
+    }
+
+
+    .refresh-button {
+
+        width: 100%;
+
+    }
+
+
+    .student-name {
+
+        font-size: 17px;
 
     }
 
@@ -840,6 +1152,53 @@ body {
 
 
 <body>
+
+
+<!-- =====================================================
+     ADMIN LOGIN
+===================================================== -->
+
+<div id="adminLogin">
+
+    <div class="admin-login-box">
+
+        <img
+            src="logo.png"
+            alt="Biruk Music Training Logo"
+            class="admin-login-logo"
+        >
+
+        <h2>
+            🔐 Admin Login
+        </h2>
+
+        <p>
+            Biruk Music Training Center
+        </p>
+
+        <input
+            type="password"
+            id="adminPassword"
+            placeholder="Enter admin password"
+            autocomplete="current-password"
+        >
+
+        <button
+            type="button"
+            id="adminLoginButton"
+        >
+            🔓 Login
+        </button>
+
+        <div id="adminLoginError">
+
+            ❌ Incorrect admin password.
+
+        </div>
+
+    </div>
+
+</div>
 
 
 <!-- =====================================================
@@ -867,6 +1226,16 @@ body {
             </p>
 
         </div>
+
+
+        <button
+            id="adminLogoutButton"
+            type="button"
+        >
+
+            🚪 Logout
+
+        </button>
 
     </div>
 
@@ -899,6 +1268,7 @@ body {
     ================================================== -->
 
     <section class="stats">
+
 
         <div class="stat-card">
 
@@ -988,7 +1358,8 @@ body {
         <button
             class="refresh-button"
             id="refreshButton"
-            type="button">
+            type="button"
+        >
 
             🔄 Refresh
 
@@ -1004,8 +1375,7 @@ body {
          STUDENTS
     ================================================== -->
 
-    <section
-        id="studentsContainer">
+    <section id="studentsContainer">
 
         <div class="loading">
 
@@ -1059,6 +1429,47 @@ const SUPABASE_PUBLISHABLE_KEY =
 const CONFIRM_PAYMENT_URL =
 SUPABASE_URL +
 "/functions/v1/confirm-payment";
+
+
+/* =====================================================
+   ADMIN LOGIN
+===================================================== */
+
+/*
+   NOTE:
+   Kun frontend login qofa.
+   Security dhugaa irratti Supabase Auth + RLS
+   fayyadamuun caalaatti nageenya qaba.
+*/
+
+const ADMIN_PASSWORD =
+"Birukh@2026";
+
+
+const adminLogin =
+document.getElementById(
+    "adminLogin"
+);
+
+const adminPassword =
+document.getElementById(
+    "adminPassword"
+);
+
+const adminLoginButton =
+document.getElementById(
+    "adminLoginButton"
+);
+
+const adminLoginError =
+document.getElementById(
+    "adminLoginError"
+);
+
+const adminLogoutButton =
+document.getElementById(
+    "adminLogoutButton"
+);
 
 
 /* =====================================================
@@ -1193,6 +1604,154 @@ function showMessage(
 
 
 /* =====================================================
+   ADMIN LOGIN CHECK
+===================================================== */
+
+function checkAdminLogin() {
+
+    const loggedIn =
+        sessionStorage.getItem(
+            "biruk_admin_logged_in"
+        );
+
+
+    if (
+        loggedIn === "true"
+    ) {
+
+        adminLogin.style.display =
+            "none";
+
+        document.body.style.overflow =
+            "auto";
+
+        loadStudents();
+
+    }
+
+    else {
+
+        adminLogin.style.display =
+            "flex";
+
+        document.body.style.overflow =
+            "hidden";
+
+        studentsContainer.innerHTML = "";
+
+    }
+
+}
+
+
+/* =====================================================
+   ADMIN LOGIN
+===================================================== */
+
+adminLoginButton.onclick =
+    function() {
+
+        const password =
+            adminPassword.value.trim();
+
+
+        if (
+            password ===
+            ADMIN_PASSWORD
+        ) {
+
+            sessionStorage.setItem(
+                "biruk_admin_logged_in",
+                "true"
+            );
+
+
+            adminLoginError.style.display =
+                "none";
+
+
+            adminPassword.value =
+                "";
+
+
+            adminLogin.style.display =
+                "none";
+
+
+            document.body.style.overflow =
+                "auto";
+
+
+            loadStudents();
+
+        }
+
+        else {
+
+            adminLoginError.style.display =
+                "block";
+
+            adminPassword.value =
+                "";
+
+            adminPassword.focus();
+
+        }
+
+    };
+
+
+/* =====================================================
+   ENTER KEY LOGIN
+===================================================== */
+
+adminPassword.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Enter"
+        ) {
+
+            adminLoginButton.click();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   ADMIN LOGOUT
+===================================================== */
+
+adminLogoutButton.onclick =
+    function() {
+
+        const confirmed =
+            window.confirm(
+                "Admin irraa logout gochuu barbaaddaa?"
+            );
+
+
+        if (!confirmed) {
+
+            return;
+
+        }
+
+
+        sessionStorage.removeItem(
+            "biruk_admin_logged_in"
+        );
+
+
+        location.reload();
+
+    };
+
+
+/* =====================================================
    LOAD STUDENTS
 ===================================================== */
 
@@ -1235,7 +1794,9 @@ async function loadStudents() {
             );
 
 
-        if (!enrollmentResponse.ok) {
+        if (
+            !enrollmentResponse.ok
+        ) {
 
             throw new Error(
                 await enrollmentResponse.text()
@@ -1270,7 +1831,9 @@ async function loadStudents() {
             );
 
 
-        if (!studentResponse.ok) {
+        if (
+            !studentResponse.ok
+        ) {
 
             throw new Error(
                 await studentResponse.text()
@@ -1305,7 +1868,9 @@ async function loadStudents() {
             );
 
 
-        if (!courseResponse.ok) {
+        if (
+            !courseResponse.ok
+        ) {
 
             throw new Error(
                 await courseResponse.text()
@@ -1361,6 +1926,7 @@ async function loadStudents() {
 
 
         updateStats();
+
 
         renderStudents(
             allEnrollmentData
@@ -1484,7 +2050,8 @@ function renderStudents(
     }
 
 
-    studentsContainer.innerHTML = "";
+    studentsContainer.innerHTML =
+        "";
 
 
     data.forEach(
@@ -1566,9 +2133,7 @@ function renderStudents(
                     <div class="student-profile">
 
                         <div class="student-avatar">
-
                             👤
-
                         </div>
 
                         <div>
@@ -1910,7 +2475,9 @@ async function confirmPayment(
         }
 
 
-        if (!response.ok) {
+        if (
+            !response.ok
+        ) {
 
             throw new Error(
 
@@ -2025,22 +2592,38 @@ searchInput.addEventListener(
 
                     const text = (
 
-                        student?.full_name +
-                        " " +
-                        student?.phone +
-                        " " +
-                        student?.email +
-                        " " +
-                        course?.name +
-                        " " +
-                        enrollment?.tx_ref
-
-                    ).toLowerCase();
+                        student?.full_name ||
+                        ""
 
 
-                    return text.includes(
-                        query
+                    ) + " " + (
+
+                        student?.phone ||
+                        ""
+
+                    ) + " " + (
+
+                        student?.email ||
+                        ""
+
+                    ) + " " + (
+
+                        course?.name ||
+                        ""
+
+                    ) + " " + (
+
+                        enrollment?.tx_ref ||
+                        ""
+
                     );
+
+
+                    return text
+                        .toLowerCase()
+                        .includes(
+                            query
+                        );
 
                 }
             );
@@ -2064,6 +2647,7 @@ refreshButton.onclick =
         refreshButton.disabled =
             true;
 
+
         refreshButton.textContent =
             "Refreshing... ⏳";
 
@@ -2074,6 +2658,7 @@ refreshButton.onclick =
         refreshButton.disabled =
             false;
 
+
         refreshButton.textContent =
             "🔄 Refresh";
 
@@ -2081,10 +2666,10 @@ refreshButton.onclick =
 
 
 /* =====================================================
-   INITIAL LOAD
+   START ADMIN
 ===================================================== */
 
-loadStudents();
+checkAdminLogin();
 
 </script>
 
