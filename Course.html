@@ -2,594 +2,256 @@
 <html lang="en">
 
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
-
-<title>
-My Courses | Biruk Music Training Center
-</title>
+<title>My Courses | Biruk Music Training Center</title>
 
 <style>
 
-/* =====================================================
-   RESET
-===================================================== */
-
-* {
-    box-sizing: border-box;
+*{
+    box-sizing:border-box;
 }
 
-body {
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#080808;
+    color:#222;
+}
 
-    margin: 0;
-
-    font-family:
-        Arial,
-        sans-serif;
+.courses{
+    position:relative;
+    max-width:1050px;
+    margin:50px auto;
+    padding:45px 25px;
+    border-radius:28px;
+    overflow:hidden;
 
     background:
-        #080808;
+    linear-gradient(
+        rgba(0,0,0,.82),
+        rgba(0,0,0,.90)
+    ),
+    url("hero.jpg");
 
-    color:
-        #222;
+    background-size:cover;
+    background-position:center;
+
+    box-shadow:0 15px 45px rgba(0,0,0,.4);
 }
 
-
-/* =====================================================
-   COURSES CONTAINER
-===================================================== */
-
-.courses {
-
-    position: relative;
-
-    max-width: 1050px;
-
-    margin: 50px auto;
-
-    padding: 45px 25px;
-
-    border-radius: 28px;
-
-    overflow: hidden;
-
-    background:
-
-        linear-gradient(
-            rgba(0,0,0,0.82),
-            rgba(0,0,0,0.90)
-        ),
-
-        url("hero.jpg");
-
-    background-size:
-        cover;
-
-    background-position:
-        center;
-
-    box-shadow:
-        0 15px 45px
-        rgba(0,0,0,0.4);
+.courses-logo{
+    text-align:center;
+    margin-bottom:20px;
 }
 
+.courses-logo img{
+    width:95px;
+    height:95px;
+    object-fit:contain;
+    border-radius:20px;
+    background:white;
+    padding:7px;
 
-/* =====================================================
-   LOGO
-===================================================== */
-
-.courses-logo {
-
-    text-align: center;
-
-    margin-bottom: 20px;
+    box-shadow:0 8px 25px rgba(0,0,0,.5);
 }
 
-.courses-logo img {
-
-    width: 95px;
-
-    height: 95px;
-
-    object-fit: contain;
-
-    border-radius: 20px;
-
-    background: white;
-
-    padding: 7px;
-
-    box-shadow:
-        0 8px 25px
-        rgba(0,0,0,0.5);
+.section-title{
+    text-align:center;
+    margin-bottom:30px;
+    color:white;
 }
 
-
-/* =====================================================
-   TITLE
-===================================================== */
-
-.section-title {
-
-    text-align: center;
-
-    margin-bottom: 35px;
-
-    color: white;
+.section-title h1{
+    margin:0;
+    font-size:34px;
 }
 
-.section-title h1 {
-
-    margin: 0;
-
-    font-size: 34px;
+.section-title p{
+    color:#ccc;
+    margin-top:10px;
 }
 
-.section-title p {
-
-    color: #ccc;
-
-    margin-top: 10px;
-
-    line-height: 1.6;
+#loginMessage{
+    display:none;
+    text-align:center;
+    background:#fff3cd;
+    color:#664d03;
+    padding:18px;
+    border-radius:12px;
+    margin-bottom:25px;
+    font-weight:bold;
 }
 
-
-/* =====================================================
-   LOGIN MESSAGE
-===================================================== */
-
-#loginMessage {
-
-    display: none;
-
-    text-align: center;
-
-    background:
-        #fff3cd;
-
-    color:
-        #664d03;
-
-    padding: 18px;
-
-    border-radius: 12px;
-
-    margin-bottom: 25px;
-
-    font-weight: bold;
+#statusMessage{
+    text-align:center;
+    color:white;
+    padding:15px;
+    margin-bottom:20px;
 }
 
-#loginMessage a {
+.course-card{
+    display:grid;
+    grid-template-columns:280px 1fr;
+    margin-bottom:25px;
 
-    color:
-        #664d03;
+    background:rgba(255,255,255,.97);
 
-    font-weight:
-        bold;
+    border-radius:22px;
+    overflow:hidden;
 
-    text-decoration:
-        none;
+    box-shadow:0 12px 30px rgba(0,0,0,.3);
+
+    transition:.3s;
 }
 
-
-/* =====================================================
-   STATUS
-===================================================== */
-
-#statusMessage {
-
-    text-align:
-        center;
-
-    color:
-        white;
-
-    padding:
-        15px;
-
-    margin-bottom:
-        20px;
-
-    line-height:
-        1.6;
+.course-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 18px 40px rgba(0,0,0,.4);
 }
 
-
-/* =====================================================
-   COURSE CARD
-===================================================== */
-
-.course-card {
-
-    display:
-        grid;
-
-    grid-template-columns:
-        280px 1fr;
-
-    margin-bottom:
-        25px;
-
-    background:
-        rgba(255,255,255,0.97);
-
-    border-radius:
-        22px;
-
-    overflow:
-        hidden;
-
-    box-shadow:
-        0 12px 30px
-        rgba(0,0,0,0.3);
-
-    transition:
-        transform .3s ease,
-        box-shadow .3s ease;
+.course-image{
+    position:relative;
+    min-height:300px;
+    overflow:hidden;
 }
 
-.course-card:hover {
-
-    transform:
-        translateY(-5px);
-
-    box-shadow:
-        0 18px 40px
-        rgba(0,0,0,0.4);
+.course-image img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
 }
 
+.course-icon{
+    position:absolute;
+    bottom:18px;
+    left:18px;
 
-/* =====================================================
-   COURSE IMAGE
-===================================================== */
+    width:60px;
+    height:60px;
 
-.course-image {
+    display:flex;
+    align-items:center;
+    justify-content:center;
 
-    position:
-        relative;
+    border-radius:16px;
 
-    min-height:
-        300px;
+    background:rgba(0,0,0,.75);
 
-    overflow:
-        hidden;
+    color:white;
+    font-size:30px;
 }
 
-.course-image img {
-
-    width:
-        100%;
-
-    height:
-        100%;
-
-    object-fit:
-        cover;
-
-    display:
-        block;
-
-    transition:
-        transform .4s ease;
+.course-content{
+    padding:30px;
 }
 
-.course-card:hover
-.course-image img {
-
-    transform:
-        scale(1.06);
+.course-content h2{
+    margin-top:0;
+    font-size:28px;
+    color:#111;
 }
 
-
-/* =====================================================
-   ICON
-===================================================== */
-
-.course-icon {
-
-    position:
-        absolute;
-
-    bottom:
-        18px;
-
-    left:
-        18px;
-
-    width:
-        60px;
-
-    height:
-        60px;
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    border-radius:
-        16px;
-
-    background:
-        rgba(0,0,0,0.75);
-
-    color:
-        white;
-
-    font-size:
-        30px;
-
-    backdrop-filter:
-        blur(5px);
+.course-content>p{
+    color:#666;
+    line-height:1.7;
 }
 
-
-/* =====================================================
-   CONTENT
-===================================================== */
-
-.course-content {
-
-    padding:
-        30px;
+.course-topics{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:5px 20px;
+    margin:20px 0;
 }
 
-.course-content h2 {
-
-    margin-top:
-        0;
-
-    font-size:
-        28px;
-
-    color:
-        #111;
+.course-topics p{
+    margin:5px 0;
+    color:#333;
+    font-size:14px;
 }
 
-.course-content > p {
-
-    color:
-        #666;
-
-    line-height:
-        1.7;
+.course-price{
+    display:inline-block;
+    padding:10px 16px;
+    border-radius:10px;
+    background:#111;
+    color:white;
+    font-weight:bold;
+    margin-bottom:18px;
 }
 
+.course-button{
+    display:block;
+    width:100%;
+    text-align:center;
 
-/* =====================================================
-   TOPICS
-===================================================== */
+    padding:15px;
 
-.course-topics {
+    border:none;
+    border-radius:12px;
 
-    display:
-        grid;
+    background:linear-gradient(
+        135deg,
+        #111,
+        #333
+    );
 
-    grid-template-columns:
-        repeat(2,1fr);
-
-    gap:
-        5px 20px;
-
-    margin:
-        20px 0;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+    font-size:16px;
 }
 
-.course-topics p {
-
-    margin:
-        5px 0;
-
-    color:
-        #333;
-
-    font-size:
-        14px;
+.course-button:disabled{
+    opacity:.65;
+    cursor:not-allowed;
 }
 
-
-/* =====================================================
-   PRICE
-===================================================== */
-
-.course-price {
-
-    display:
-        inline-block;
-
-    padding:
-        10px 16px;
-
-    border-radius:
-        10px;
-
-    background:
-        #111;
-
-    color:
-        white;
-
-    font-weight:
-        bold;
-
-    margin-bottom:
-        18px;
+.locked-button{
+    background:#777;
 }
 
-
-/* =====================================================
-   BUTTON
-===================================================== */
-
-.course-button {
-
-    display:
-        block;
-
-    width:
-        100%;
-
-    text-align:
-        center;
-
-    padding:
-        15px;
-
-    border:
-        none;
-
-    border-radius:
-        12px;
-
-    background:
-        #777;
-
-    color:
-        white;
-
-    font-weight:
-        bold;
-
-    cursor:
-        not-allowed;
-
-    font-size:
-        16px;
-
-    transition:
-        .25s;
+.available-button{
+    background:linear-gradient(
+        135deg,
+        #168a3a,
+        #0c6d2c
+    );
 }
 
+@media(max-width:750px){
 
-/* =====================================================
-   LOCKED
-===================================================== */
-
-.course-card.locked {
-
-    opacity:
-        .78;
-}
-
-.locked-button {
-
-    background:
-        #777;
-
-    cursor:
-        not-allowed;
-}
-
-
-/* =====================================================
-   AVAILABLE
-===================================================== */
-
-.course-card.available {
-
-    opacity:
-        1;
-}
-
-.available-button {
-
-    background:
-        linear-gradient(
-            135deg,
-            #168a3a,
-            #0c6d2c
-        );
-
-    cursor:
-        pointer;
-}
-
-.available-button:hover {
-
-    transform:
-        translateY(-2px);
-
-    box-shadow:
-        0 8px 20px
-        rgba(22,138,58,0.3);
-}
-
-
-/* =====================================================
-   HIDDEN COURSE
-===================================================== */
-
-.course-card.hidden-course {
-
-    display:
-        none;
-}
-
-
-/* =====================================================
-   MOBILE
-===================================================== */
-
-@media(max-width:750px) {
-
-    .courses {
-
-        margin:
-            25px 12px;
-
-        padding:
-            30px 15px;
+    .courses{
+        margin:25px 12px;
+        padding:30px 15px;
     }
 
-    .course-card {
-
-        grid-template-columns:
-            1fr;
+    .course-card{
+        grid-template-columns:1fr;
     }
 
-    .course-image {
-
-        min-height:
-            220px;
-
-        height:
-            220px;
+    .course-image{
+        min-height:220px;
+        height:220px;
     }
 
-    .course-content {
-
-        padding:
-            22px;
+    .course-content{
+        padding:22px;
     }
 
-    .course-content h2 {
-
-        font-size:
-            23px;
+    .course-content h2{
+        font-size:23px;
     }
 
-    .course-topics {
-
-        grid-template-columns:
-            1fr;
+    .course-topics{
+        grid-template-columns:1fr;
     }
 
-    .section-title h1 {
-
-        font-size:
-            27px;
+    .section-title h1{
+        font-size:27px;
     }
-
 }
 
 </style>
@@ -599,47 +261,28 @@ body {
 
 <body>
 
-
 <section class="courses">
-
-
-<!-- =====================================================
-     LOGO
-===================================================== -->
 
 <div class="courses-logo">
 
 <img
-    src="logo.png"
-    alt="Biruk Music Training Center Logo"
+src="logo.png"
+alt="Biruk Music Training Center Logo"
 >
 
 </div>
 
 
-<!-- =====================================================
-     TITLE
-===================================================== -->
-
 <div class="section-title">
 
-<h1>
-🎓 My Courses
-</h1>
+<h1>🎓 My Courses</h1>
 
 <p>
-Your registered courses appear here.
-<br>
-Payment must be confirmed by the administrator
-before the course can be opened.
+Courses registered by you will be unlocked after payment confirmation.
 </p>
 
 </div>
 
-
-<!-- =====================================================
-     LOGIN MESSAGE
-===================================================== -->
 
 <div id="loginMessage">
 
@@ -647,16 +290,15 @@ before the course can be opened.
 
 <br><br>
 
-<a href="Login.html">
+<a
+href="Login.html"
+style="color:#664d03;font-weight:bold;"
+>
 Go to Login
 </a>
 
 </div>
 
-
-<!-- =====================================================
-     STATUS
-===================================================== -->
 
 <div id="statusMessage">
 Checking your courses... ⏳
@@ -668,15 +310,15 @@ Checking your courses... ⏳
 ===================================================== -->
 
 <div
-    class="course-card locked"
-    id="keyboardCard"
+class="course-card"
+id="keyboardCard"
 >
 
 <div class="course-image">
 
 <img
-    src="keyboard.jpg"
-    alt="Keyboard Training"
+src="keyboard.jpg"
+alt="Keyboard Training"
 >
 
 <div class="course-icon">
@@ -688,43 +330,33 @@ Checking your courses... ⏳
 
 <div class="course-content">
 
-<h2>
-Keyboard Training
-</h2>
+<h2>Keyboard Training</h2>
 
 <p>
 Learn keyboard playing step by step
 from Beginner to Advanced level.
 </p>
 
-
 <div class="course-topics">
 
 <p>✔ Keyboard Basics</p>
-
 <p>✔ Chords & Melody</p>
-
 <p>✔ Farfana & Styles</p>
-
 <p>✔ Voice Selection</p>
-
 <p>✔ Song Practice</p>
-
 <p>✔ Stage Performance</p>
 
 </div>
-
 
 <div class="course-price">
 💰 800 ETB
 </div>
 
-
 <button
-    type="button"
-    class="course-button locked-button"
-    id="keyboardButton"
-    disabled
+type="button"
+class="course-button locked-button"
+id="keyboardButton"
+disabled
 >
 🔒 Locked
 </button>
@@ -734,21 +366,20 @@ from Beginner to Advanced level.
 </div>
 
 
-
 <!-- =====================================================
      SOUND MIXER COURSE
 ===================================================== -->
 
 <div
-    class="course-card locked"
-    id="mixerCard"
+class="course-card"
+id="mixerCard"
 >
 
 <div class="course-image">
 
 <img
-    src="mixer.jpg"
-    alt="Sound Mixer Training"
+src="mixer.jpg"
+alt="Sound Mixer Training"
 >
 
 <div class="course-icon">
@@ -760,43 +391,33 @@ from Beginner to Advanced level.
 
 <div class="course-content">
 
-<h2>
-Sound Mixer Training
-</h2>
+<h2>Sound Mixer Training</h2>
 
 <p>
 Learn professional live sound and
 mixer operation step by step.
 </p>
 
-
 <div class="course-topics">
 
 <p>✔ Mixer Basics</p>
-
 <p>✔ Gain & EQ</p>
-
 <p>✔ Effects</p>
-
 <p>✔ Microphone Setup</p>
-
 <p>✔ Speaker Setup</p>
-
 <p>✔ Church & Event Sound</p>
 
 </div>
-
 
 <div class="course-price">
 💰 1,000 ETB
 </div>
 
-
 <button
-    type="button"
-    class="course-button locked-button"
-    id="mixerButton"
-    disabled
+type="button"
+class="course-button locked-button"
+id="mixerButton"
+disabled
 >
 🔒 Locked
 </button>
@@ -804,7 +425,6 @@ mixer operation step by step.
 </div>
 
 </div>
-
 
 </section>
 
@@ -822,12 +442,11 @@ const SUPABASE_KEY =
 "sb_publishable_PWLxrjF2dDUKDrApUJM1dQ_e9BfxDqO";
 
 const GET_COURSE_URL =
-SUPABASE_URL +
-"/functions/v1/get-course";
+SUPABASE_URL + "/functions/v1/get-course";
 
 
 /* =====================================================
-   DIRECT PDF FALLBACK URLS
+   GITHUB PAGES PDF LINKS
 ===================================================== */
 
 const KEYBOARD_PDF =
@@ -842,34 +461,22 @@ const MIXER_PDF =
 ===================================================== */
 
 const statusMessage =
-document.getElementById(
-    "statusMessage"
-);
+document.getElementById("statusMessage");
 
 const loginMessage =
-document.getElementById(
-    "loginMessage"
-);
+document.getElementById("loginMessage");
 
 const keyboardCard =
-document.getElementById(
-    "keyboardCard"
-);
+document.getElementById("keyboardCard");
 
 const mixerCard =
-document.getElementById(
-    "mixerCard"
-);
+document.getElementById("mixerCard");
 
 const keyboardButton =
-document.getElementById(
-    "keyboardButton"
-);
+document.getElementById("keyboardButton");
 
 const mixerButton =
-document.getElementById(
-    "mixerButton"
-);
+document.getElementById("mixerButton");
 
 
 /* =====================================================
@@ -877,30 +484,18 @@ document.getElementById(
 ===================================================== */
 
 const studentId =
-localStorage.getItem(
-    "student_id"
-);
+localStorage.getItem("student_id");
 
 
 /* =====================================================
    LOCK COURSE
 ===================================================== */
 
-function lockCourse(
-    card,
-    button
-) {
+function lockCourse(card,button){
 
-    card.classList.remove(
-        "available"
-    );
+    card.classList.add("locked");
 
-    card.classList.add(
-        "locked"
-    );
-
-    button.disabled =
-        true;
+    button.disabled=true;
 
     button.classList.remove(
         "available-button"
@@ -910,11 +505,29 @@ function lockCourse(
         "locked-button"
     );
 
-    button.textContent =
-        "🔒 Locked";
+    button.textContent="🔒 Locked";
+}
 
-    button.onclick =
-        null;
+
+/* =====================================================
+   OPEN PDF
+===================================================== */
+
+function openPDF(url){
+
+    if(!url){
+
+        alert(
+            "Course PDF is not available."
+        );
+
+        return;
+    }
+
+    window.open(
+        url,
+        "_blank"
+    );
 }
 
 
@@ -925,19 +538,12 @@ function lockCourse(
 function unlockCourse(
     card,
     button,
-    url
-) {
+    pdfUrl
+){
 
-    card.classList.remove(
-        "locked"
-    );
+    card.classList.remove("locked");
 
-    card.classList.add(
-        "available"
-    );
-
-    button.disabled =
-        false;
+    button.disabled=false;
 
     button.classList.remove(
         "locked-button"
@@ -947,50 +553,39 @@ function unlockCourse(
         "available-button"
     );
 
-    button.textContent =
-        "📖 Open Course";
+    button.textContent=
+        "📖 Open Course PDF";
 
+    button.onclick=function(){
 
-    button.onclick =
-        function() {
+        openPDF(pdfUrl);
 
-            if (!url) {
-
-                alert(
-                    "Course PDF is not available."
-                );
-
-                return;
-            }
-
-
-            /*
-             * PDF opens ONLY after
-             * get-course says:
-             *
-             * payment_status = paid
-             * course_access = true
-             */
-
-            window.open(
-                url,
-                "_blank"
-            );
-
-        };
+    };
 
 }
 
 
 /* =====================================================
-   GET COURSE ID
+   CHECK COURSE
 ===================================================== */
 
-async function getCourseId(
-    courseName
-) {
+async function checkCourse(
+    courseName,
+    card,
+    button,
+    pdfUrl
+){
 
-    const response =
+    lockCourse(
+        card,
+        button
+    );
+
+    try{
+
+        /* GET COURSE ID */
+
+        const courseResponse =
         await fetch(
 
             SUPABASE_URL +
@@ -1001,12 +596,9 @@ async function getCourseId(
             "&select=id,name,price",
 
             {
+                method:"GET",
 
-                method:
-                    "GET",
-
-                headers: {
-
+                headers:{
                     "apikey":
                         SUPABASE_KEY,
 
@@ -1016,228 +608,107 @@ async function getCourseId(
 
                     "Accept":
                         "application/json"
-
                 }
+            }
+
+        );
+
+
+        if(!courseResponse.ok){
+
+            throw new Error(
+                "Could not connect to courses database."
+            );
+
+        }
+
+
+        const courses =
+            await courseResponse.json();
+
+
+        if(
+            !Array.isArray(courses) ||
+            courses.length===0
+        ){
+
+            throw new Error(
+                courseName +
+                " was not found."
+            );
+
+        }
+
+
+        const courseId =
+            courses[0].id;
+
+
+        /* CHECK PAYMENT */
+
+        const response =
+        await fetch(
+
+            GET_COURSE_URL,
+
+            {
+                method:"POST",
+
+                headers:{
+
+                    "Content-Type":
+                        "application/json",
+
+                    "apikey":
+                        SUPABASE_KEY,
+
+                    "Authorization":
+                        "Bearer " +
+                        SUPABASE_KEY
+                },
+
+                body:JSON.stringify({
+
+                    student_id:
+                        studentId,
+
+                    course_id:
+                        courseId
+
+                })
 
             }
 
         );
 
 
-    if (!response.ok) {
-
-        const errorText =
-            await response.text();
-
-        throw new Error(
-            "Course lookup failed: " +
-            errorText
-        );
-
-    }
+        const result =
+            await response.json();
 
 
-    const data =
-        await response.json();
-
-
-    if (
-        !Array.isArray(data) ||
-        data.length === 0
-    ) {
-
-        throw new Error(
-            courseName +
-            " was not found in courses table."
-        );
-
-    }
-
-
-    return data[0];
-
-}
-
-
-/* =====================================================
-   CHECK COURSE ACCESS
-===================================================== */
-
-async function checkCourse(
-    courseName,
-    card,
-    button,
-    fallbackPdf
-) {
-
-    lockCourse(
-        card,
-        button
-    );
-
-
-    try {
-
-        /* ---------------------------------------------
-           FIND COURSE
-        --------------------------------------------- */
-
-        const course =
-            await getCourseId(
-                courseName
-            );
-
-
-        /* ---------------------------------------------
-           ASK EDGE FUNCTION
-        --------------------------------------------- */
-
-        const response =
-            await fetch(
-
-                GET_COURSE_URL,
-
-                {
-
-                    method:
-                        "POST",
-
-                    headers: {
-
-                        "Content-Type":
-                            "application/json",
-
-                        "apikey":
-                            SUPABASE_KEY,
-
-                        "Authorization":
-                            "Bearer " +
-                            SUPABASE_KEY
-
-                    },
-
-                    body:
-                        JSON.stringify({
-
-                            student_id:
-                                studentId,
-
-                            course_id:
-                                course.id
-
-                        })
-
-                }
-
-            );
-
-
-        let result;
-
-        try {
-
-            result =
-                await response.json();
-
-        }
-
-        catch {
-
-            throw new Error(
-                "Invalid response from course access server."
-            );
-
-        }
-
-
-        /* ---------------------------------------------
-           ACCESS DENIED
-        --------------------------------------------- */
-
-        if (
+        if(
             !response.ok ||
-            result.success !== true
-        ) {
+            result.success!==true
+        ){
 
-            return {
-
-                success:
-                    false,
-
-                error:
-                    result.error ||
-                    "Course is locked."
-
-            };
+            return false;
 
         }
 
 
-        /* ---------------------------------------------
-           FINAL SECURITY CHECK
-        --------------------------------------------- */
+        if(
+            result.payment_status!=="paid" ||
+            result.course_access!==true
+        ){
 
-        if (
-            result.payment_status !==
-            "paid"
-        ) {
-
-            return {
-
-                success:
-                    false,
-
-                error:
-                    "Payment has not been confirmed."
-
-            };
+            return false;
 
         }
 
 
-        if (
-            result.course_access !==
-            true
-        ) {
-
-            return {
-
-                success:
-                    false,
-
-                error:
-                    "Course access is locked."
-
-            };
-
-        }
-
-
-        /* ---------------------------------------------
-           PDF URL
-        --------------------------------------------- */
-
-        let pdfUrl =
-            result.url;
-
-
-        /*
-         * If Edge Function does not return
-         * URL for any reason, use the correct
-         * GitHub Pages PDF for this course.
-         */
-
-        if (!pdfUrl) {
-
-            pdfUrl =
-                fallbackPdf;
-
-        }
-
-
-        /* ---------------------------------------------
-           UNLOCK
-        --------------------------------------------- */
+        /* IMPORTANT:
+           USE LOCAL GITHUB PDF
+        */
 
         unlockCourse(
             card,
@@ -1245,36 +716,18 @@ async function checkCourse(
             pdfUrl
         );
 
-
-        return {
-
-            success:
-                true
-
-        };
+        return true;
 
     }
 
-
-    catch(error) {
+    catch(error){
 
         console.error(
-            "COURSE ACCESS ERROR:",
             courseName,
             error
         );
 
-
-        return {
-
-            success:
-                false,
-
-            error:
-                error.message ||
-                "Unable to check course."
-
-        };
+        return false;
 
     }
 
@@ -1285,44 +738,31 @@ async function checkCourse(
    LOAD COURSES
 ===================================================== */
 
-async function loadCourses() {
+async function loadCourses(){
 
+    if(!studentId){
 
-    /* ---------------------------------------------
-       LOGIN CHECK
-    --------------------------------------------- */
-
-    if (!studentId) {
-
-        statusMessage.style.display =
+        statusMessage.style.display=
             "none";
 
-        loginMessage.style.display =
+        loginMessage.style.display=
             "block";
-
 
         lockCourse(
             keyboardCard,
             keyboardButton
         );
 
-
         lockCourse(
             mixerCard,
             mixerButton
         );
 
-
         return;
-
     }
 
 
-    /* ---------------------------------------------
-       CHECK KEYBOARD
-    --------------------------------------------- */
-
-    const keyboardResult =
+    const keyboard =
         await checkCourse(
 
             "Keyboard Training",
@@ -1336,11 +776,7 @@ async function loadCourses() {
         );
 
 
-    /* ---------------------------------------------
-       CHECK MIXER
-    --------------------------------------------- */
-
-    const mixerResult =
+    const mixer =
         await checkCourse(
 
             "Sound Mixer Training",
@@ -1354,16 +790,10 @@ async function loadCourses() {
         );
 
 
-    /* ---------------------------------------------
-       AVAILABLE COURSES
-    --------------------------------------------- */
-
-    const available = [];
+    const available=[];
 
 
-    if (
-        keyboardResult.success
-    ) {
+    if(keyboard){
 
         available.push(
             "Keyboard Training"
@@ -1372,9 +802,7 @@ async function loadCourses() {
     }
 
 
-    if (
-        mixerResult.success
-    ) {
+    if(mixer){
 
         available.push(
             "Sound Mixer Training"
@@ -1383,24 +811,18 @@ async function loadCourses() {
     }
 
 
-    /* ---------------------------------------------
-       STATUS MESSAGE
-    --------------------------------------------- */
+    if(available.length===0){
 
-    if (
-        available.length === 0
-    ) {
-
-        statusMessage.textContent =
-            "🔒 No course has been unlocked yet. Please wait until the administrator confirms your payment.";
+        statusMessage.textContent=
+        "🔒 No paid course is available yet. After payment confirmation, your course will be unlocked.";
 
     }
 
-    else {
+    else{
 
-        statusMessage.textContent =
-            "✅ Your unlocked course: " +
-            available.join(", ");
+        statusMessage.textContent=
+        "✅ Your available course(s): " +
+        available.join(", ");
 
     }
 
@@ -1414,7 +836,6 @@ async function loadCourses() {
 loadCourses();
 
 </script>
-
 
 </body>
 
